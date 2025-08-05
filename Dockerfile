@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-humble-rviz2 \
     ros-humble-rqt \
     ros-humble-rqt-graph \
+    ros-humble-robot-localization \
     && rm -rf /var/lib/apt/lists/*
 
 # 4. (선택적) 필요한 Python 라이브러리 설치

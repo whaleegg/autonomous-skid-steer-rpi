@@ -16,7 +16,13 @@ def generate_launch_description():
         'vehicle_params.yaml'
     )
 
-    # 1. 각 기능 그룹의 Launch 파일을 '포함(Include)'하도록 설정
+    ekf_params_file = os.path.join(
+        get_package_share_directory('params_package'),
+        'config',
+        'ekf.yaml'
+    )
+
+    # 2. 각 기능 그룹의 Launch 파일을 '포함(Include)'하도록 설정
     
     # teleop.launch.py를 포함 (joy_node, teleop_node 실행)
     teleop_launch = IncludeLaunchDescription(
@@ -41,9 +47,17 @@ def generate_launch_description():
         launch_arguments={'interface': 'can0'}.items()
     )
 
-    # 2. 개별 핵심 노드들을 직접 실행하도록 설정
+    # c. imu.launch.py (imu_driver + imu_filter 실행) - 새로 만듦
+    imu_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('bringup'), 'launch', 'imu.launch.py')
+        )
+    )
 
-    # core_controller_node 실행
+
+    # 3. 개별 핵심 노드들을 직접 실행하도록 설정
+
+    # a. core_controller_node (상태 관리, CAN <-> ROS 변환, /odom/wheel 발행)
     core_controller_node = Node(
         package='controller_package',
         executable='core_controller_node',
@@ -53,16 +67,26 @@ def generate_launch_description():
     )
 
     # (향후) 자율주행 노드들 실행
+    # b. robot_localization (EKF 센서 퓨전)
+    robot_localization_node = Node(
+       package='robot_localization',
+       executable='ekf_node',
+       name='ekf_filter_node',
+       output='screen',
+       parameters=[ekf_params_file]
+    )
+
     # parking_node = Node(...)
     # path_return_node = Node(...)
 
-    # 3. 모든 것을 하나의 LaunchDescription에 담아 반환
+    # 4. 모든 것을 하나의 LaunchDescription에 담아 반환
     return LaunchDescription([
         teleop_launch,
         # socketcan_launch,
 	socketcan_sender_launch,
         socketcan_receiver_launch,
         core_controller_node,
+	robot_localization_node,
         # parking_node,
         # path_return_node,
     ])

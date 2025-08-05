@@ -10,6 +10,13 @@
 #include "geometry_msgs/msg/twist.hpp"
 #include "can_msgs/msg/frame.hpp"
 #include "interfaces/msg/vehicle_status.hpp"
+#include "std_msgs/msg/int64.hpp"
+
+#include "nav_msgs/msg/odometry.hpp"
+#include "tf2_ros/transform_broadcaster.h"
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
+#include <cstring> // std::memcpy
 
 // 1. C++의 enum class를 사용하여 차량 모드를 안전하게 정의
 enum class VehicleMode {
@@ -54,6 +61,16 @@ public:
         can_tx_publisher_ = this->create_publisher<can_msgs::msg::Frame>("/to_can_bus", 10);
         vehicle_status_publisher_ = this->create_publisher<interfaces::msg::VehicleStatus>("/vehicle_status", 10);
 
+    	// --- 여기에 RPM Publisher 생성 코드를 추가합니다 ---
+        left_rpm_publisher_ = this->create_publisher<std_msgs::msg::Int64>("/left_wheel_rpm", 10);
+        right_rpm_publisher_ = this->create_publisher<std_msgs::msg::Int64>("/right_wheel_rpm", 10);
+
+    	odom_wheel_publisher_ = this->create_publisher<nav_msgs::msg::Odometry>("/odom/wheel", 10);
+	    tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+    	last_odom_time_ = this->get_clock()->now();
+
+
+
         manual_cmd_sub_ = this->create_subscription<geometry_msgs::msg::Twist>(
             "/cmd_vel_manual", 10, std::bind(&CoreControllerNode::manual_cmd_callback, this, std::placeholders::_1));
         
@@ -65,8 +82,10 @@ public:
 
         // TODO: 자율주행 노드가 발행할 토픽 구독
         // auto_cmd_sub_ = this->create_subscription<geometry_msgs::msg::Twist>( ... );
-        // TODO: TC375의 피드백을 받을 토픽 구독
-        // can_rx_sub_ = this->create_subscription<can_msgs::msg::Frame>( ... );
+        
+	// TC375의 피드백을 받을 토픽 구독
+        can_rx_sub_ = this->create_subscription<can_msgs::msg::Frame>(
+            "/from_can_bus", 10, std::bind(&CoreControllerNode::can_rx_callback, this, std::placeholders::_1));
 
         // === 메인 제어 루프 타이머 ===
         control_loop_timer_ = this->create_wall_timer(
@@ -77,22 +96,43 @@ public:
     }
 
 private:
-    // === 멤버 변수 ===
+    // ==================== 멤버 변수 (상태 저장용) ====================
     VehicleMode current_mode_;
+
+    // --- 수동 제어용 ---
     double latest_linear_vel_ratio_ = 0.0;
     double latest_angular_vel_ratio_ = 0.0;
-    // TODO: 자율주행용 속도 변수
+
+    // --- 자율 제어용 (TODO) ---
     // double latest_auto_linear_vel_ = 0.0;
     // double latest_auto_angular_vel_ = 0.0;
 
-    // --- ROS 2 인터페이스 객체 ---
+    // --- 오도메트리 계산용 ---
+    double odom_x_ = 0.0;
+    double odom_y_ = 0.0;
+    double odom_theta_ = 0.0;
+    rclcpp::Time last_odom_time_;
+
+    // ==================== ROS 2 인터페이스 객체 ====================
+    // --- Publishers ---
     rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr can_tx_publisher_;
     rclcpp::Publisher<interfaces::msg::VehicleStatus>::SharedPtr vehicle_status_publisher_;
+    rclcpp::Publisher<std_msgs::msg::Int64>::SharedPtr left_rpm_publisher_;
+    rclcpp::Publisher<std_msgs::msg::Int64>::SharedPtr right_rpm_publisher_;
+    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_wheel_publisher_;
+    
+    // --- Subscribers ---
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr manual_cmd_sub_;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr mode_request_sub_;
     rclcpp::Subscription<std_msgs::msg::UInt8>::SharedPtr aux_command_sub_;
-    rclcpp::TimerBase::SharedPtr control_loop_timer_;
+    rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr can_rx_sub_;
 
+    // --- 기타 ---
+    rclcpp::TimerBase::SharedPtr control_loop_timer_;
+    std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
+
+
+    // ==================== 함수 선언 ====================
     // === 메인 제어 루프 ===
     void control_loop()
     {
@@ -258,6 +298,38 @@ private:
         can_tx_publisher_->publish(frame);
     }
 
+
+    void can_rx_callback(const can_msgs::msg::Frame::SharedPtr msg)
+    {
+        // ID가 0x201 (STS_WHEEL_SPEEDS)인 메시지만 처리
+        if (msg->id == 0x201 && msg->dlc == 8) {
+            int32_t left_rpm, right_rpm;
+            // Little-Endian 바이트 배열을 int32로 변환 (언패킹)
+            // C++의 std::memcpy를 사용하여 안전하게 메모리 복사
+            std::memcpy(&left_rpm, &msg->data[0], sizeof(int32_t));
+            std::memcpy(&right_rpm, &msg->data[4], sizeof(int32_t));
+
+            // std_msgs::msg::Int64 메시지 생성 및 발행
+            // (ros2_odometry_estimation은 Int64를 받으므로 타입 캐스팅 필요)
+            //auto left_rpm_msg = std_msgs::msg::Int64();
+            //left_rpm_msg.data = static_cast<int64_t>(left_rpm_val);
+            //left_rpm_publisher_->publish(left_rpm_msg);
+
+            //auto right_rpm_msg = std_msgs::msg::Int64();
+            //right_rpm_msg.data = static_cast<int64_t>(right_rpm_val);
+            //right_rpm_publisher_->publish(right_rpm_msg);
+
+	        calculate_and_publish_odometry(left_rpm, right_rpm);
+
+            // (디버깅용 로그)
+            RCLCPP_DEBUG(this->get_logger(), "Parsed RPM -> Left: %d, Right: %d",
+                             left_rpm, right_rpm);
+
+        }
+        // TODO: ID 0x300 (긴급 정지) 등 다른 CAN ID 처리 로직 추가
+    }
+
+
     // --- 유틸리티 함수 ---
     void send_pwm_command(int left_pwm, int right_pwm)
     {
@@ -290,6 +362,53 @@ private:
 	    latest_linear_vel_ratio_ = 0.0;
             latest_angular_vel_ratio_ = 0.0;
         }
+    }
+
+    void calculate_and_publish_odometry(int32_t left_rpm, int32_t right_rpm)
+    {
+        rclcpp::Time current_time = this->get_clock()->now();
+        double dt = (current_time - last_odom_time_).seconds();
+        last_odom_time_ = current_time;
+
+        if (dt <= 0.0) return; // 시간 변화가 없으면 계산하지 않음
+
+        double wheel_radius = this->get_parameter("wheel_radius").as_double();
+        double track_width = this->get_parameter("track_width").as_double();
+
+        double v_left = (left_rpm / 60.0) * (2 * M_PI * wheel_radius);
+        double v_right = (right_rpm / 60.0) * (2 * M_PI * wheel_radius);
+
+        double v = (v_right + v_left) / 2.0;
+        double w = (v_right - v_left) / track_width;
+
+        odom_x_ += v * std::cos(odom_theta_) * dt;
+        odom_y_ += v * std::sin(odom_theta_) * dt;
+        odom_theta_ += w * dt;
+
+        // --- Odometry 메시지 발행 ---
+        auto odom_msg = nav_msgs::msg::Odometry();
+        odom_msg.header.stamp = current_time;
+        odom_msg.header.frame_id = "odom";
+        odom_msg.child_frame_id = "base_link";
+    
+        tf2::Quaternion q;
+        q.setRPY(0, 0, odom_theta_);
+        odom_msg.pose.pose.orientation = tf2::toMsg(q);
+        odom_msg.pose.pose.position.x = odom_x_;
+        odom_msg.pose.pose.position.y = odom_y_;
+        odom_msg.twist.twist.linear.x = v;
+        odom_msg.twist.twist.angular.z = w;
+        odom_wheel_publisher_->publish(odom_msg);
+
+        // --- TF 브로드캐스팅 ---
+        geometry_msgs::msg::TransformStamped t;
+        t.header.stamp = current_time;
+        t.header.frame_id = "odom";
+        t.child_frame_id = "base_link";
+        t.transform.translation.x = odom_x_;
+        t.transform.translation.y = odom_y_;
+        t.transform.rotation = odom_msg.pose.pose.orientation;
+        tf_broadcaster_->sendTransform(t);
     }
 };
 
