@@ -12,6 +12,7 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(can_msgs REQUIRED) # CAN 메시지 사용을 위해 필요
 find_package(interfaces REQUIRED) # 우리가 만든 커스텀 메시지 사용을 위해 필요
+find_package(nav_msgs REQUIRED)
 
 # --- 2. 실행 파일(노드) 빌드 설정 ---
 # 'core_controller_node'라는 이름의 실행 파일을 'src/core_controller_node.cpp'로부터 생성

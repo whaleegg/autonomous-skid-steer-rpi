@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
-#include <struct.h> // C++ struct.h for C-style packing (if needed)
+//#include <struct.h> // C++ struct.h for C-style packing (if needed)
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -11,6 +11,10 @@
 #include "geometry_msgs/msg/twist.hpp"
 #include "can_msgs/msg/frame.hpp"
 #include "interfaces/msg/vehicle_status.hpp"
+
+#include "nav_msgs/msg/odometry.hpp"
+#include "nav_msgs/msg/path.hpp"
+#include "geometry_msgs/msg/pose_stamped.hpp"
 
 // 1. C++의 enum class를 사용하여 차량 모드를 안전하게 정의
 enum class VehicleMode {
@@ -174,7 +178,7 @@ private:
         recorded_poses_.clear();
         //recording_ = true;
         odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
-                    "/odom", 10, std::bind(&Joy2CanNode::odomCallback, this, std::placeholders::_1));
+                    "/odom", 10, std::bind(&CoreControllerNode::odomCallback, this, std::placeholders::_1));
      
         // 기록 중에도 수동 제어는 계속되어야 하므로, manual 핸들러를 호출
         handle_manual_mode_logic(); // 기존 manual 핸들러의 내용을 별도 함수로 분리
