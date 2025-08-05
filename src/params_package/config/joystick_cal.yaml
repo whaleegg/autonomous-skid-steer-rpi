@@ -1,0 +1,37 @@
+axes:
+  0:
+    center: -0.0
+    deadzone_min: -0.0152
+    deadzone_max: 0.0153
+    min: -1.0
+    max: 1.0
+  1:
+    center: -0.0
+    deadzone_min: -0.0327
+    deadzone_max: 0.0153
+    min: -1.0
+    max: 1.0
+  2:
+    center: -0.0
+    deadzone_min: -0.0588
+    deadzone_max: 0.0066
+    min: -1.0
+    max: 1.0
+  3:
+    center: -0.0
+    deadzone_min: -0.0152
+    deadzone_max: 0.1286
+    min: -1.0
+    max: 1.0
+  4:
+    center: 0.0
+    deadzone_min: 0.0
+    deadzone_max: 0.0
+    min: 0.0
+    max: 0.0
+  5:
+    center: 0.0
+    deadzone_min: 0.0
+    deadzone_max: 0.0
+    min: 0.0
+    max: 0.0

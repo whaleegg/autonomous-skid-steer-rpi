@@ -3,7 +3,6 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
-#include <struct.h> // C++ struct.h for C-style packing (if needed)
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -38,20 +37,20 @@ std::string to_string(VehicleMode mode) {
 class CoreControllerNode : public rclcpp::Node
 {
 public:
-    CoreControllerNode() : Node("core_controller_node")
+    //CoreControllerNode() : Node("core_controller_node")
+    explicit CoreControllerNode(const rclcpp::NodeOptions & options) : Node("core_controller_node", options)
     {
-	// === 1. 파라미터 선언 ===
-        this->declare_parameter<double>("max_pwm", 255.0);
-	this->declare_parameter<double>("steering_sensitivity", 0.7);
-        this->declare_parameter<double>("linear_sensitivity", 1.0);
-        // 향후 자율주행 모드에서 사용할 파라미터들
-        this->declare_parameter<double>("max_linear_velocity", 0.8);
-        this->declare_parameter<double>("max_angular_velocity", 2.0);
+//	// 1. 파라미터 선언 (차량의 물리/성능 관련 파라미터만)
+//        this->declare_parameter<double>("max_pwm", 255.0);
+//	// 자율제어
+//        this->declare_parameter<double>("track_width", 0.13);
+//        this->declare_parameter<double>("max_linear_velocity", 0.8);
+//        this->declare_parameter<double>("max_angular_velocity", 2.0);
 
         // 2. 현재 모드를 STANDBY로 초기화
         current_mode_ = VehicleMode::STANDBY;
 
-        // === 3. Publisher 및 Subscriber 선언 ===
+        // 3. Publisher 및 Subscriber 선언
         can_tx_publisher_ = this->create_publisher<can_msgs::msg::Frame>("/to_can_bus", 10);
         vehicle_status_publisher_ = this->create_publisher<interfaces::msg::VehicleStatus>("/vehicle_status", 10);
 
@@ -103,7 +102,7 @@ private:
         switch (current_mode_)
         {
             case VehicleMode::MANUAL:
-                handle_manual_mode();
+		handle_manual_mode();
                 break;
             case VehicleMode::PARKING:
                 // handle_parking_mode();
@@ -137,26 +136,25 @@ private:
     }
 
     void handle_manual_mode() {
-        //RCLCPP_INFO(this->get_logger(), "In MANUAL mode...", RCLC_LOG_THROTTLE(RCUTILS_STEADY_TIME, 1000));
-	RCLCPP_INFO_THROTTLE(
-            this->get_logger(),
-            *this->get_clock(),
-            1000,
-            "In MANUAL mode..."
-    	);
+        RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In MANUAL mode...");
 	handle_manual_mode_logic();
     }
 
     void handle_parking_mode() {
         RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In PARKING mode...");
         // TODO: /cmd_vel_auto 토픽의 값을 PWM으로 변환하여 전송
+	// handle_autonomous_mode_logic();
+	// 지금은 tc375에서 수행
     }
 
     void handle_recording_mode()
     {
         RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In RECORDING mode...");
-        // TODO: 여기에 경로를 기록하는 로직 호출
-    
+        
+	// 2. TODO: 여기에 path_recorder_node와 상호작용하여
+        //           경로를 기록하라는 신호를 보내는 로직이 들어갈 것
+        //    (예: path_recorder->add_current_pose();)
+
         // 기록 중에도 수동 제어는 계속되어야 하므로, manual 핸들러를 호출
         handle_manual_mode_logic(); // 기존 manual 핸들러의 내용을 별도 함수로 분리
     }
@@ -164,6 +162,7 @@ private:
     void handle_returning_mode() {
         RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In RETURNING mode...");
         // TODO: /cmd_vel_auto 토픽의 값을 PWM으로 변환하여 전송
+	handle_autonomous_mode_logic();
     }
 
     void handle_emergency_stop() {
@@ -174,21 +173,33 @@ private:
 
     void handle_manual_mode_logic()
     {
+	// 1. 파라미터 가져오기
         const double MAX_PWM = this->get_parameter("max_pwm").as_double();
 
-        double left_signal = this->latest_linear_vel_ratio_ - this->latest_angular_vel_ratio_;
-        double right_signal = this->latest_linear_vel_ratio_ + this->latest_angular_vel_ratio_;
+        // 2. teleop_node가 보낸 최종 보정된 비율 값을 가져옴
+        double linear_final_ratio = this->latest_linear_vel_ratio_;
+        double angular_final_ratio = this->latest_angular_vel_ratio_;
+        
+        // 3. 스키드 스티어 믹싱
+        double left_signal = linear_final_ratio - angular_final_ratio;
+        double right_signal = linear_final_ratio + angular_final_ratio;
 
-        double max_abs_signal = std::max(std::abs(left_signal), std::abs(right_signal));
-        if (max_abs_signal > 1.0) {
-            left_signal /= max_abs_signal;
-            right_signal /= max_abs_signal;
-        }
-
+        // 4. 최종 클리핑
+        // (teleop_node에서 이미 정규화되었지만, 안전을 위해 한번 더 수행)
+        left_signal = std::max(-1.0, std::min(left_signal, 1.0));
+        right_signal = std::max(-1.0, std::min(right_signal, 1.0));
+        
+        // 5. PWM 값으로 최종 변환
         int left_pwm = static_cast<int>(left_signal * MAX_PWM);
         int right_pwm = static_cast<int>(right_signal * MAX_PWM);
+        
+        // 6. CAN 메시지 전송
+        send_pwm_command(left_pwm, right_pwm);
+    }
 
-        send_pwm_command(left_pwm, right_pwm); 
+    void handle_autonomous_mode_logic()
+    {
+        // TODO: 자율 제어를 위한 물리 모델 기반 PWM 변환 로직
     }
 
     // === 콜백 함수 ===
@@ -285,7 +296,9 @@ private:
 int main(int argc, char * argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<CoreControllerNode>());
+    rclcpp::NodeOptions options;
+    options.automatically_declare_parameters_from_overrides(true);
+    rclcpp::spin(std::make_shared<CoreControllerNode>(options));
     rclcpp::shutdown();
     return 0;
 }

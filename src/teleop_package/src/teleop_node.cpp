@@ -1,6 +1,8 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <map>
+#include <cmath>
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/joy.hpp"
 #include "geometry_msgs/msg/twist.hpp"
@@ -23,24 +25,24 @@ public:
 //    TeleopNode() : Node("teleop_node")
     explicit TeleopNode(const rclcpp::NodeOptions & options) : Node("teleop_node", options)
     {
-        // === 1. ÆÄ¶ó¹ÌÅÍ ¼±¾ğ ===
-        this->declare_parameter<std::string>("calibration_file", "/root/ros_ws/src/joystick_cal.yaml");
-        this->declare_parameter<double>("expo_factor", 0.7);
-        this->declare_parameter<int>("axis_linear", 1);
-        this->declare_parameter<int>("axis_angular", 2);
-        this->declare_parameter<double>("scale_linear", 1.0);
-        this->declare_parameter<double>("scale_angular", 1.0);
+//        // === íŒŒë¼ë¯¸í„° ì„ ì–¸ (ì´ì œ ëª¨ë“  í•¸ë“¤ë§ íŒŒë¼ë¯¸í„°ê°€ ì—¬ê¸°ì—) ===
+//        this->declare_parameter<std::string>("calibration_file", "/root/ros_ws/src/params_package/config/joystick_cal.yaml");
+//        this->declare_parameter<double>("expo_factor", 0.7);
+//        this->declare_parameter<int>("axis_linear", 1);
+//        this->declare_parameter<int>("axis_angular", 0);
+//        this->declare_parameter<double>("scale_linear", 1.0);
+//        this->declare_parameter<double>("scale_angular", 1.0);
+//        this->declare_parameter<double>("steering_sensitivity", 0.7);
+//        this->declare_parameter<double>("linear_sensitivity", 1.0);
 
-
-        // === 2. Ä¶¸®ºê·¹ÀÌ¼Ç ÆÄÀÏ ·Îµå ===
         load_calibration_file();
 
-        // === Publisherµé ¼±¾ğ ===
+        // === Publisherë“¤ ì„ ì–¸ ===
         cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel_manual", 10);
         mode_request_pub_ = this->create_publisher<std_msgs::msg::String>("/mode_request", 10);
         aux_command_pub_ = this->create_publisher<std_msgs::msg::UInt8>("/aux_command", 10);
 
-        // === Subscriber ¼±¾ğ ===
+        // === Subscriber ì„ ì–¸ ===
         joy_sub_ = this->create_subscription<sensor_msgs::msg::Joy>(
             "/joy", 10, std::bind(&TeleopNode::joy_callback, this, std::placeholders::_1));
 
@@ -54,23 +56,36 @@ public:
 private:
     void joy_callback(const sensor_msgs::msg::Joy::SharedPtr msg)
     {
-        // --- 1. ½ºÆ½(Axes) Ã³¸® ---
-        size_t axis_linear_idx = this->get_parameter("axis_linear").as_int(); 
+        size_t axis_linear_idx = this->get_parameter("axis_linear").as_int();
         size_t axis_angular_idx = this->get_parameter("axis_angular").as_int();
 
-        if (msg->axes.size() > axis_linear_idx && msg->axes.size() > axis_angular_idx)
-        {
-            // 3´Ü°è º¸Á¤ ÆÄÀÌÇÁ¶óÀÎ Àû¿ë
-            double linear_val = normalize_axis(msg->axes[axis_linear_idx], axis_linear_idx);
-            double angular_val = normalize_axis(msg->axes[axis_angular_idx], axis_angular_idx);
-            
-            auto twist_msg = geometry_msgs::msg::Twist();
-            twist_msg.linear.x = this->get_parameter("scale_linear").as_double() * linear_val;
-            twist_msg.angular.z = this->get_parameter("scale_angular").as_double() * angular_val;
-            cmd_vel_pub_->publish(twist_msg);
+        if (msg->axes.size() <= axis_linear_idx || msg->axes.size() <= axis_angular_idx) return;
+
+        // --- 1. ìº˜ë¦¬ë¸Œë ˆì´ì…˜ & ë°ë“œì¡´ì„ ì ìš©í•˜ì—¬ ì •ê·œí™” ---
+        double normalized_linear = normalize_axis(msg->axes[axis_linear_idx], axis_linear_idx);
+        double normalized_angular = normalize_axis(msg->axes[axis_angular_idx], axis_angular_idx);
+
+        // --- 2. íƒ€ì›í˜• ì œì–´ ê³µê°„ìœ¼ë¡œ ë³€í™˜ (ê°ë„ ì ìš© + ì›í˜• ì •ê·œí™”) ---
+        double linear_input = normalized_linear * this->get_parameter("linear_sensitivity").as_double();
+        double angular_input = normalized_angular * this->get_parameter("steering_sensitivity").as_double();
+        
+        double magnitude = std::sqrt(linear_input * linear_input + angular_input * angular_input);
+        if (magnitude > 1.0) {
+            linear_input /= magnitude;
+            angular_input /= magnitude;
         }
 
-        // --- 2. ¹öÆ°(Buttons) Ã³¸® ---
+        // --- 3. ë°˜ì‘ ê³¡ì„ (Expo) ì ìš© ---
+        double curved_linear = apply_response_curve(linear_input);
+        double curved_angular = apply_response_curve(angular_input);
+        
+        // --- 4. ìµœì¢… Twist ë©”ì‹œì§€ ë°œí–‰ ---
+        auto twist_msg = geometry_msgs::msg::Twist();
+        twist_msg.linear.x = this->get_parameter("scale_linear").as_double() * curved_linear;
+        twist_msg.angular.z = this->get_parameter("scale_angular").as_double() * curved_angular;
+        cmd_vel_pub_->publish(twist_msg);
+
+        // --- 5. ë²„íŠ¼ ì²˜ë¦¬ ---
         if (msg->buttons.size() >= 12)
         {
             // O ¹öÆ° (1¹ø): ½Ãµ¿ On/Off
@@ -204,7 +219,6 @@ private:
 int main(int argc, char* argv[])
 {
     rclcpp::init(argc, argv);
-//    rclcpp::spin(std::make_shared<TeleopNode>());
     // NodeOptionsë¥¼ ìƒì„±í•˜ê³ , íŒŒë¼ë¯¸í„°ë¥¼ ìë™ìœ¼ë¡œ ì„ ì–¸í•˜ë„ë¡ ì„¤ì •
     rclcpp::NodeOptions options;
     options.automatically_declare_parameters_from_overrides(true);

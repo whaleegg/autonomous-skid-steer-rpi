@@ -1,3 +1,4 @@
+from ament_index_python.packages import get_package_share_directory
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Joy
@@ -5,21 +6,26 @@ import yaml
 import os
 import time
 
-CALIBRATION_FILE = 'joystick_cal.yaml'
-
 class JoystickCalibrationNode(Node):
     def __init__(self):
         super().__init__('joystick_calibration_node')
         self.subscription = self.create_subscription(Joy, '/joy', self.joy_callback, 10)
         
-        # 데이터를 축별로 저장할 딕셔너리 구조로 변경
         self.axes_data = {}
+        self.state = 'INITIALIZING' # 초기 상태 추가
         
-        self.state = 'CALIBRATING_CENTER'
-        self.start_time = self.get_clock().now()
+        # 1. 파일 저장 경로를 생성자에서 결정
+        try:
+            self.save_dir_ = "/root/ros_ws/src/params_package/config"
+            self.calibration_file_path_ = os.path.join(self.save_dir_, "joystick_cal.yaml")
 
-        self.get_logger().info("--- 조이스틱 캘리브레이션 시작 ---")
-        self.get_logger().info("1. [중앙값 측정] 5초간 조이스틱을 가만히 두세요...")
+            self.state = 'CALIBRATING_CENTER'
+            self.start_time = self.get_clock().now()
+            self.get_logger().info("--- 조이스틱 캘리브레이션 시작 ---")
+            self.get_logger().info("1. [중앙값 측정] 5초간 조이스틱을 가만히 두세요...")
+        except Exception as e:
+            self.get_logger().error(f"params_package를 찾을 수 없습니다. 먼저 빌드해주세요: {e}")
+            self.state = 'ERROR'
 
     def joy_callback(self, msg: Joy):
         # 모든 축에 대한 데이터 구조를 미리 생성
@@ -66,28 +72,39 @@ class JoystickCalibrationNode(Node):
             rclpy.shutdown()
 
     def save_calibration(self):
-        # YAML 파일 구조를 더 명확하게 변경
+        if self.state == 'ERROR': return
+
+        # 2. calibration_data 변수를 여기서 정의
         calibration_data = {'axes': dict(sorted(self.axes_data.items()))}
         
-        file_path = CALIBRATION_FILE
-        with open(file_path, 'w') as f:
-            yaml.dump(calibration_data, f, default_flow_style=False, sort_keys=False)
-        self.get_logger().info(f"캘리브레이션 데이터가 '{os.path.abspath(file_path)}' 파일에 저장되었습니다.")
-        # 저장된 내용 터미널에 출력
-        print("\n--- 저장된 캘리브레이션 데이터 ---")
-        print(yaml.dump(calibration_data, default_flow_style=False, sort_keys=False))
-        print("---------------------------------")
+        try:
+            # 3. 디렉토리가 없으면 생성 (경로는 생성자에서 설정한 멤버 변수 사용)
+            os.makedirs(self.save_dir_, exist_ok=True)
+            
+            with open(self.calibration_file_path_, 'w') as f:
+                yaml.dump(calibration_data, f, default_flow_style=False, sort_keys=False)
+            
+            self.get_logger().info(f"캘리브레이션 데이터가 '{self.calibration_file_path_}' 파일에 저장되었습니다.")
+            print("\n--- 저장된 캘리브레이션 데이터 ---")
+            print(yaml.dump(calibration_data, default_flow_style=False, sort_keys=False))
+            print("---------------------------------")
+        except Exception as e:
+            self.get_logger().error(f"파일 저장 실패: {e}")
 
 
 def main(args=None):
     rclpy.init(args=args)
     calibration_node = JoystickCalibrationNode()
-    while rclpy.ok():
-        rclpy.spin_once(calibration_node, timeout_sec=0.05) # 더 자주 스핀
-        calibration_node.transition_state()
-        if calibration_node.state == 'DONE':
-            break
+    
+    if calibration_node.state != 'ERROR':
+        while rclpy.ok():
+            rclpy.spin_once(calibration_node, timeout_sec=0.05)
+            calibration_node.transition_state()
+            if calibration_node.state == 'DONE':
+                break
+    
     calibration_node.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
