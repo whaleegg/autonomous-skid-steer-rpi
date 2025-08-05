@@ -25,6 +25,7 @@ ament_target_dependencies(core_controller_node
   geometry_msgs
   can_msgs
   interfaces
+  nav_msgs
 )
 
 # --- 4. 실행 파일 설치 ---

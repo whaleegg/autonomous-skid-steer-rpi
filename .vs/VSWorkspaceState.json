@@ -5,6 +5,6 @@
     "\\src\\controller_package",
     "\\src\\controller_package\\src"
   ],
-  "SelectedNode": "\\src\\controller_package\\src\\core_controller_node.cpp",
+  "SelectedNode": "\\src\\controller_package\\CMakeLists.txt",
   "PreviewInSolutionExplorer": false
 }
