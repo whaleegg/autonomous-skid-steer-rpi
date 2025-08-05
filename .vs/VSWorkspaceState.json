@@ -2,14 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\controller_package",
-    "\\src\\ros2_odometry_estimation-main",
-    "\\src\\ros2_odometry_estimation-main\\include",
-    "\\src\\ros2_odometry_estimation-main\\include\\vehicle_models",
+    "\\src\\path_smoother-feature-imu_odom_fusion",
+    "\\src\\path_smoother-feature-imu_odom_fusion\\launch",
+    "\\src\\path_smoother-feature-imu_odom_fusion\\src",
+    "\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch",
+    "\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\src",
     "\\src\\ros2_odometry_estimation-main\\src",
     "\\src\\ros2_odometry_estimation-main\\src\\node",
     "\\src\\ros2_odometry_estimation-main\\src\\vehicle_models"
   ],
-  "SelectedNode": "\\src\\controller_package\\CMakeLists.txt",
+  "SelectedNode": "\\src\\path_smoother-feature-imu_odom_fusion\\src\\path_publisher.cpp",
   "PreviewInSolutionExplorer": false
 }
