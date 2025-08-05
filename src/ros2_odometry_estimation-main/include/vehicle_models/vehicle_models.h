@@ -2,6 +2,7 @@
 #define VEHICLE_MODELS_H
 
 #include <memory>
+#include <string>
 
 class VehicleModel;
 using VehicleModelPtr = std::unique_ptr<VehicleModel>;

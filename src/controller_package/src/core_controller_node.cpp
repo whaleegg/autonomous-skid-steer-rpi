@@ -95,7 +95,7 @@ private:
     // TODO: 자율주행용 속도 변수
     // double latest_auto_linear_vel_ = 0.0;
     // double latest_auto_angular_vel_ = 0.0;
-    
+    bool path_published_ = false;  // 추가
     //to store trj
     //bool recording_{ false };
 	std::vector<geometry_msgs::msg::PoseStamped> recorded_poses_;
@@ -175,11 +175,8 @@ private:
         RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In RECORDING mode...");
         // TODO: 여기에 경로를 기록하는 로직 호출
 		//경로 기록을 위한 토픽 발행 또는 데이터 저장
-        recorded_poses_.clear();
         //recording_ = true;
-        odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
-                    "/odom", 10, std::bind(&CoreControllerNode::odomCallback, this, std::placeholders::_1));
-     
+        
         // 기록 중에도 수동 제어는 계속되어야 하므로, manual 핸들러를 호출
         handle_manual_mode_logic(); // 기존 manual 핸들러의 내용을 별도 함수로 분리
     }
@@ -188,8 +185,12 @@ private:
         RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In RETURNING mode...");
         // TODO: /cmd_vel_auto 토픽의 값을 PWM으로 변환하여 전송
         //recording_ = false;
-        generateReturnPath();
-        imu_sub_.reset();
+        if (!path_published_) {
+            generateReturnPath();
+            odom_sub_.reset();
+            path_published_ = true;
+            RCLCPP_INFO(this->get_logger(), "Return path published once");
+        }
     }
 
     void handle_emergency_stop() {
@@ -301,8 +302,19 @@ private:
         if (current_mode_ != new_mode) {
             RCLCPP_INFO(this->get_logger(), "Switching mode from %s to %s",
                         to_string(current_mode_).c_str(), to_string(new_mode).c_str());
+
             current_mode_ = new_mode;
-	    latest_linear_vel_ratio_ = 0.0;
+            if (current_mode_ == VehicleMode::RECORDING) {
+                recorded_poses_.clear();
+                odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
+                    "/odom", 10, std::bind(&CoreControllerNode::odomCallback, this, std::placeholders::_1));
+            }
+            else if (current_mode_ == VehicleMode::RETURNING) {
+                path_published_ = false; //if you want to publish tgt_path only, use this!
+
+            }
+            
+	        latest_linear_vel_ratio_ = 0.0;
             latest_angular_vel_ratio_ = 0.0;
         }
     }

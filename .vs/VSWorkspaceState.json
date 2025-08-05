@@ -2,9 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\bringup\\launch",
     "\\src\\controller_package",
-    "\\src\\controller_package\\src"
+    "\\src\\ros2_odometry_estimation-main",
+    "\\src\\ros2_odometry_estimation-main\\include",
+    "\\src\\ros2_odometry_estimation-main\\include\\vehicle_models",
+    "\\src\\ros2_odometry_estimation-main\\src",
+    "\\src\\ros2_odometry_estimation-main\\src\\node",
+    "\\src\\ros2_odometry_estimation-main\\src\\vehicle_models"
   ],
-  "SelectedNode": "\\src\\controller_package\\CMakeLists.txt",
+  "SelectedNode": "\\src\\ros2_odometry_estimation-main\\package.xml",
   "PreviewInSolutionExplorer": false
 }

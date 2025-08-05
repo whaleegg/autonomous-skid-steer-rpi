@@ -20,17 +20,19 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 
 # Vehicle models lib
 add_library(vehicle_models src/vehicle_models/vehicle_models.cpp)
 target_include_directories(
   vehicle_models
-  PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/vehicle_models>
+  PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/vehicle_models>
          $<INSTALL_INTERFACE:include>)
 
 # Node
 add_executable(odometry_estimator src/node/odometry_estimation_node.cpp)
-ament_target_dependencies(odometry_estimator rclcpp nav_msgs std_msgs)
+ament_target_dependencies(odometry_estimator rclcpp nav_msgs std_msgs tf2_geometry_msgs)
 target_link_libraries(odometry_estimator vehicle_models)
 target_include_directories(
   odometry_estimator
