@@ -37,9 +37,9 @@ install(TARGETS
 
 # --- 5. Launch 파일 등 기타 리소스 설치 ---
 # launch 폴더 안의 모든 파일을 'share/<패키지이름>/launch/' 경로에 설치
-install(DIRECTORY
-  launch
-  DESTINATION share/${PROJECT_NAME})
+#install(DIRECTORY
+#  launch
+#  DESTINATION share/${PROJECT_NAME})
 
 # --- 6. 테스트 설정 (선택 사항) ---
 if(BUILD_TESTING)
