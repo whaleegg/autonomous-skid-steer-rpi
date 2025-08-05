@@ -64,6 +64,12 @@ public:
         aux_command_sub_ = this->create_subscription<std_msgs::msg::UInt8>(
             "/aux_command", 10, std::bind(&CoreControllerNode::aux_command_callback, this, std::placeholders::_1));
 
+        //to store trj and return trj
+        //odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
+        //    "/odom", 10,
+        //    std::bind(&Joy2CanNode::odomCallback, this, std::placeholders::_1));
+        tgt_path_pub_ = this->create_publisher<nav_msgs::msg::Path>("/tgt_path", 10);
+        
         // TODO: 자율주행 노드가 발행할 토픽 구독
         // auto_cmd_sub_ = this->create_subscription<geometry_msgs::msg::Twist>( ... );
         // TODO: TC375의 피드백을 받을 토픽 구독
@@ -85,6 +91,12 @@ private:
     // TODO: 자율주행용 속도 변수
     // double latest_auto_linear_vel_ = 0.0;
     // double latest_auto_angular_vel_ = 0.0;
+    
+    //to store trj
+    //bool recording_{ false };
+	std::vector<geometry_msgs::msg::PoseStamped> recorded_poses_;
+    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
+    rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr tgt_path_pub_;
 
     // --- ROS 2 인터페이스 객체 ---
     rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr can_tx_publisher_;
@@ -93,6 +105,8 @@ private:
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr mode_request_sub_;
     rclcpp::Subscription<std_msgs::msg::UInt8>::SharedPtr aux_command_sub_;
     rclcpp::TimerBase::SharedPtr control_loop_timer_;
+
+
 
     // === 메인 제어 루프 ===
     void control_loop()
@@ -149,14 +163,19 @@ private:
 
     void handle_parking_mode() {
         RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In PARKING mode...");
-        // TODO: /cmd_vel_auto 토픽의 값을 PWM으로 변환하여 전송
+        // TODO: /cmd_vel_auto 토픽의 값을 PWM으로 변환하여 전송         
     }
 
     void handle_recording_mode()
     {
         RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In RECORDING mode...");
         // TODO: 여기에 경로를 기록하는 로직 호출
-    
+		//경로 기록을 위한 토픽 발행 또는 데이터 저장
+        recorded_poses_.clear();
+        //recording_ = true;
+        odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
+                    "/odom", 10, std::bind(&Joy2CanNode::odomCallback, this, std::placeholders::_1));
+     
         // 기록 중에도 수동 제어는 계속되어야 하므로, manual 핸들러를 호출
         handle_manual_mode_logic(); // 기존 manual 핸들러의 내용을 별도 함수로 분리
     }
@@ -164,6 +183,9 @@ private:
     void handle_returning_mode() {
         RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In RETURNING mode...");
         // TODO: /cmd_vel_auto 토픽의 값을 PWM으로 변환하여 전송
+        //recording_ = false;
+        generateReturnPath();
+        imu_sub_.reset();
     }
 
     void handle_emergency_stop() {
@@ -279,6 +301,25 @@ private:
 	    latest_linear_vel_ratio_ = 0.0;
             latest_angular_vel_ratio_ = 0.0;
         }
+    }
+
+    void odomCallback(const nav_msgs::msg::Odometry::SharedPtr odom) {
+        geometry_msgs::msg::PoseStamped ps;
+        ps.header = odom->header;
+        ps.pose = odom->pose.pose;
+        recorded_poses_.push_back(ps);
+    }
+    void generateReturnPath() {
+        nav_msgs::msg::Path path;
+        path.header.stamp = this->now();
+        path.header.frame_id = "odom";
+        // recorded_poses_ 에 담긴 순서를 **역순(reverse)** 으로 하여 돌아오는 경로 생성
+        for (auto it = recorded_poses_.rbegin(); it != recorded_poses_.rend(); ++it) {
+            path.poses.push_back(*it);
+        }
+        // tgt_path 퍼블리시
+        tgt_path_pub_->publish(path);
+        RCLCPP_INFO(this->get_logger(), "Published return path with %zu points", path.poses.size());
     }
 };
 
