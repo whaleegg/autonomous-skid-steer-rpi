@@ -1,0 +1,10 @@
+# ROS 2 Colcon build artifacts
+build/
+install/
+log/
+
+# Calibration file (should be generated locally)
+src/joystick_cal.yaml
+
+# Docker build context temporary files
+.dockerignore

@@ -1,0 +1,34 @@
+core_controller_node:
+  ros__parameters:
+    
+    # === 차량 물리 제원 ===
+    # 단위는 SI 표준 (미터, 라디안 등)을 따름
+
+    wheel_radius: 0.033   # 바퀴 반지름 (m)
+    track_width: 0.13   # 좌우 바퀴 간 거리 (m)
+
+    # === 제어 파라미터 ===
+    max_linear_velocity: 0.8    # 차량의 최대 선속도 (m/s) - 튜닝 필요
+    max_angular_velocity: 2.0   # 차량의 최대 각속도 (rad/s) - 초당 약 114도 회전 (현실적인 추정치) 튜닝 필요
+    max_pwm: 255.0              # TC375 API에 맞는 최대 PWM 값
+
+    # === 핸들링 튜닝 파라미터 ===
+    # 0.0 (최대 속도 100% 사용) ~ 1.0 (최대 속도 제한).
+    linear_sensitivity: 1.0
+    # 0.0 (회전 안 함) ~ 1.0 (최대 회전). 작을수록 조향이 덜 민감해짐.
+    steering_sensitivity: 0.7
+
+    # === 엔코더 파라미터 (향후 PID 제어 시 사용) ===
+    encoder_ppr: 960           # 바퀴 1회전 당 엔코더 펄스 수
+    gear_ratio: 48.0            # 감속비
+
+teleop_node:
+  ros__parameters:
+    
+    # === 조이스틱 파라미터 ===
+    axis_linear: 1              # 전/후진 제어 축 번호
+    axis_angular: 2             # 좌/우회전 제어 축 번호
+    scale_linear: -1.0          # 전/후진 방향 반전 계수
+    scale_angular: -1.0         # 좌/우회전 방향 반전 계수
+    expo_factor: 0.7            # 반응 곡선 감도 (0.0: 선형, 1.0: 강한 곡선)
+    calibration_file: "/root/ros_ws/src/joystick_cal.yaml" # 캘리브레이션 파일 경로
