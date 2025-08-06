@@ -270,7 +270,7 @@ void PurePursuitNode::publishCmd(double v, double w)
     // goal judgement
     if (goal_dist < goal_threshold) {
         std::cout << "Goal!" << std::endl;
-
+        path_subscribe_flag = false; //re get tgt_path
         cmd_vel_msg.linear.x = 0.0;
         cmd_vel_msg.angular.z = 0.0;
     } else {

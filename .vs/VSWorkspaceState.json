@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\path_smoother-feature-imu_odom_fusion",
+    "\\src\\arcanain_simulator-feature-imu_odom_fusion",
     "\\src\\path_smoother-feature-imu_odom_fusion\\launch",
     "\\src\\path_smoother-feature-imu_odom_fusion\\src",
-    "\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch",
+    "\\src\\pure_pursuit_planner-feature-imu_odom_fusion",
     "\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\src",
-    "\\src\\ros2_odometry_estimation-main\\src",
-    "\\src\\ros2_odometry_estimation-main\\src\\node",
-    "\\src\\ros2_odometry_estimation-main\\src\\vehicle_models"
+    "\\src\\ros2_mpu9250_driver-full",
+    "\\src\\ros2_mpu9250_driver-full\\src",
+    "\\src\\ros2_mpu9250_driver\\src"
   ],
-  "SelectedNode": "\\src\\path_smoother-feature-imu_odom_fusion\\src\\path_publisher.cpp",
+  "SelectedNode": "\\src\\ros2_mpu9250_driver-full\\src\\mpu9250driver.cpp",
   "PreviewInSolutionExplorer": false
 }

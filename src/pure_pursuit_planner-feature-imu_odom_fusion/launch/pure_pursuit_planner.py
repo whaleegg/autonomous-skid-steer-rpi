@@ -5,14 +5,15 @@ from launch.substitutions import PathJoinSubstitution
 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-
+from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
     package_name = 'pure_pursuit_planner'
     simulator_package = 'arcanain_simulator'
     rviz_file_name = "pure_pursuit_planner.rviz"
 
-    file_path = os.path.expanduser('~/ros2_ws/src/arcanain_simulator/urdf/mobile_robot.urdf.xml')
+    #file_path = os.path.expanduser('~/ros2_ws/src/arcanain_simulator/urdf/mobile_robot.urdf.xml')
+    file_path = os.path.join(get_package_share_directory('arcanain_simulator'), 'urdf', 'mobile_robot.urdf.xml')
 
     with open(file_path, 'r') as file:
         robot_description = file.read()
@@ -51,11 +52,11 @@ def generate_launch_description():
         output="screen",
     )
 
-    path_publisher_node = Node(
-        package='path_smoother',
-        executable='path_publisher',
-        output="screen",
-    )
+    #path_publisher_node = Node(
+    #    package='path_smoother',
+    #    executable='path_publisher',
+    #    output="screen",
+    #)
     
     path_smoother_node = Node(
         package='path_smoother',
