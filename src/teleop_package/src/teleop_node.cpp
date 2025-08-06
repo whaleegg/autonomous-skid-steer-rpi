@@ -90,7 +90,7 @@ private:
                 publish_mode_request("request_cancel");
             }
             
-            uint8_t aux_cmd = 0;
+            uint8_t aux_cmd = last_aux_cmd_;
             // L1 버튼 (buttons[4]) 눌림(rising edge) 감지 시 bit 0 토글
             if (msg->buttons[4] == 1 && last_buttons_[4] == 0) {
                 aux_cmd ^= (1 << 0);
