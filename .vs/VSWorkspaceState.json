@@ -2,7 +2,6 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\controller_package",
     "\\src\\interfaces",
     "\\src\\interfaces\\msg",
     "\\src\\ros2_odometry_estimation-main",
@@ -12,6 +11,6 @@
     "\\src\\tcp_package",
     "\\src\\tcp_package\\src"
   ],
-  "SelectedNode": "\\src\\controller_package\\src\\core_controller_node.cpp",
+  "SelectedNode": "\\src\\tcp_package\\CMakeLists.txt",
   "PreviewInSolutionExplorer": false
 }
