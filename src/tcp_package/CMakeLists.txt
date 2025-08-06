@@ -14,7 +14,7 @@ find_package(interfaces REQUIRED)
 
 add_executable(tcp_publisher_node src/tcp_pub.cpp)
 ament_target_dependencies(tcp_publisher_node rclcpp std_msgs geometry_msgs interfaces)
-install(TARGETS tcp_publisher_node DESTINATION src/${PROJECT_NAME})
+install(TARGETS tcp_publisher_node DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

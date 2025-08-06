@@ -22,11 +22,11 @@ class TcpPublisherNode : public rclcpp::Node
 public:
     TcpPublisherNode()
         : Node("tcp_publisher_node"),
-        mode_(0),
+        mode_("0"),
         aux_l_(0),
         aux_r_(0),
-        rpm_l_(0.0f),
-        rpm_r_(0.0f)
+        rpm_l_(0),
+        rpm_r_(0)
     {
         // Subscriptions
         vehicle_status_sub_ = this->create_subscription<interfaces::msg::VehicleStatus>(
@@ -160,7 +160,7 @@ private:
     int client_sock_{ -1 };
 
     // Latest data
-    std::string mode_{ "0" };
+    std::string mode_;
     int aux_l_;
     int aux_r_;
     int rpm_l_;
