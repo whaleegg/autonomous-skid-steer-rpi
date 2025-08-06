@@ -90,6 +90,7 @@ private:
                 publish_mode_request("request_cancel");
             }
             
+            uint8_t aux_cmd = 0;
             // L1 버튼 (buttons[4]) 눌림(rising edge) 감지 시 bit 0 토글
             if (msg->buttons[4] == 1 && last_button_[4] == 0) {
                 aux_cmd ^= (1 << 0);
@@ -110,7 +111,7 @@ private:
             }
             // L1/R1 버튼 (4, 5번): 깜빡이
             // (깜빡이는 누르고 있는 동안만 켜지도록 단순하게 구현)
-            //uint8_t aux_cmd = 0;
+            
             //if (msg->buttons[4] == 1) { // L1
             //    aux_cmd |= (1 << 0); // bit 0: left blinker
             //}
