@@ -16,10 +16,10 @@ OdometryEstimator::OdometryEstimator() : Node("odometry_publisher")
   vehicle_model_ = VehicleModel::createConcreteVehicleModel("DifferentialDrive");
 
   // create subscribers
-  right_wheel_subscriber_ = this->create_subscription<std_msgs::msg::Int64>(
+  right_wheel_subscriber_ = this->create_subscription<std_msgs::msg::Int32>(
       "right_wheel_rpm", 10,
       std::bind(&OdometryEstimator::handleRightWheelInput, this, std::placeholders::_1));
-  left_wheel_subscriber_ = this->create_subscription<std_msgs::msg::Int64>(
+  left_wheel_subscriber_ = this->create_subscription<std_msgs::msg::Int32>(
       "left_wheel_rpm", 10,
       std::bind(&OdometryEstimator::handleLeftWheelInput, this, std::placeholders::_1));
 
@@ -28,12 +28,12 @@ OdometryEstimator::OdometryEstimator() : Node("odometry_publisher")
   timer_ = this->create_wall_timer(100ms, std::bind(&OdometryEstimator::publish, this));
 }
 
-void OdometryEstimator::handleRightWheelInput(const std_msgs::msg::Int64::SharedPtr rpm_right)
+void OdometryEstimator::handleRightWheelInput(const std_msgs::msg::Int32::SharedPtr rpm_right)
 {
   rpms_right_.push_back(rpm_right->data);
 }
 
-void OdometryEstimator::handleLeftWheelInput(const std_msgs::msg::Int64::SharedPtr rpm_left)
+void OdometryEstimator::handleLeftWheelInput(const std_msgs::msg::Int32::SharedPtr rpm_left)
 {
   rpms_left_.push_back(rpm_left->data);
 }

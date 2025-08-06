@@ -46,7 +46,7 @@ public:
     {
 	// === 1. 파라미터 선언 ===
         this->declare_parameter<double>("max_pwm", 255.0);
-	this->declare_parameter<double>("steering_sensitivity", 0.7);
+	    this->declare_parameter<double>("steering_sensitivity", 0.7);
         this->declare_parameter<double>("linear_sensitivity", 1.0);
         // 향후 자율주행 모드에서 사용할 파라미터들
         this->declare_parameter<double>("max_linear_velocity", 0.8);
