@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(tcp_package)
+project(tcp_publisher)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -13,8 +13,8 @@ find_package(geometry_msgs REQUIRED)
 find_package(interfaces REQUIRED)
 
 add_executable(tcp_publisher_node src/tcp_pub.cpp)
-ament_target_dependencies(tcp_publisher_node rclcpp std_msgs interfaces)
-install(TARGETS tcp_publisher_node DESTINATION lib/${PROJECT_NAME})
+ament_target_dependencies(tcp_publisher_node rclcpp std_msgs geometry_msgs interfaces)
+install(TARGETS tcp_publisher_node DESTINATION src/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

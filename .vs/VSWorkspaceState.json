@@ -11,6 +11,6 @@
     "\\src\\tcp_package",
     "\\src\\tcp_package\\src"
   ],
-  "SelectedNode": "\\src\\tcp_package\\CMakeLists.txt",
+  "SelectedNode": "\\src\\tcp_package\\src\\tcp_pub.cpp",
   "PreviewInSolutionExplorer": false
 }
