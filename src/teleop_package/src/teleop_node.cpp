@@ -89,25 +89,44 @@ private:
             if (is_button_pressed(msg, 0)) {
                 publish_mode_request("request_cancel");
             }
-            // L1/R1 ¹öÆ° (4, 5¹ø): ±ôºıÀÌ
-            // (±ôºıÀÌ´Â ´©¸£°í ÀÖ´Â µ¿¾È¸¸ ÄÑÁöµµ·Ï ´Ü¼øÇÏ°Ô ±¸Çö)
-            uint8_t aux_cmd = 0;
-            if (msg->buttons[4] == 1) { // L1
-                aux_cmd |= (1 << 0); // bit 0: left blinker
-            }
-            if (msg->buttons[5] == 1) { // R1
-                aux_cmd |= (1 << 1); // bit 1: right blinker
-            }
             
-            // í˜„ì¬ ê³„ì‚°ëœ aux_cmdê°€ ì´ì „ì— ë°œí–‰í–ˆë˜ ê°’ê³¼ ë‹¤ë¥¼ ê²½ìš°ì—ë§Œ ë°œí–‰
+            // L1 ¹öÆ° (buttons[4]) ´­¸²(rising edge) °¨Áö ½Ã bit 0 Åä±Û
+            if (msg->buttons[4] == 1 && last_button_state_[0] == 0) {
+                aux_cmd ^= (1 << 0);
+            }
+            // R1 ¹öÆ° (buttons[5]) ´­¸²(rising edge) °¨Áö ½Ã bit 1 Åä±Û
+            if (msg->buttons[5] == 1 && last_button_state_[1] == 0) {
+                aux_cmd ^= (1 << 1);
+            }
+            // ¹öÆ° »óÅÂ ÀúÀå (for next rising-edge detection)
+            last_button_state_[0] = msg->buttons[4];
+            last_button_state_[1] = msg->buttons[5];
+            // »óÅÂ°¡ ¹Ù²î¾úÀ¸¸é publish
             if (aux_cmd != last_aux_cmd_) {
                 auto aux_msg = std_msgs::msg::UInt8();
                 aux_msg.data = aux_cmd;
                 aux_command_pub_->publish(aux_msg);
-                
-                // ë§ˆì§€ë§‰ìœ¼ë¡œ ë°œí–‰í•œ ê°’ì„ í˜„ì¬ ê°’ìœ¼ë¡œ ì—…ë°ì´íŠ¸
                 last_aux_cmd_ = aux_cmd;
             }
+            // L1/R1 ¹öÆ° (4, 5¹ø): ±ôºıÀÌ
+            // (±ôºıÀÌ´Â ´©¸£°í ÀÖ´Â µ¿¾È¸¸ ÄÑÁöµµ·Ï ´Ü¼øÇÏ°Ô ±¸Çö)
+            //uint8_t aux_cmd = 0;
+            //if (msg->buttons[4] == 1) { // L1
+            //    aux_cmd |= (1 << 0); // bit 0: left blinker
+            //}
+            //if (msg->buttons[5] == 1) { // R1
+            //    aux_cmd |= (1 << 1); // bit 1: right blinker
+            //}
+            //
+            //// ?„ì¬ ê³„ì‚°??aux_cmdê°€ ?´ì „??ë°œí–‰?ˆë˜ ê°’ê³¼ ?¤ë? ê²½ìš°?ë§Œ ë°œí–‰
+            //if (aux_cmd != last_aux_cmd_) {
+            //    auto aux_msg = std_msgs::msg::UInt8();
+            //    aux_msg.data = aux_cmd;
+            //    aux_command_pub_->publish(aux_msg);
+            //    
+            //    // ë§ˆì?ë§‰ìœ¼ë¡?ë°œí–‰??ê°’ì„ ?„ì¬ ê°’ìœ¼ë¡??…ë°?´íŠ¸
+            //    last_aux_cmd_ = aux_cmd;
+            //}
         }
 
         // ÇöÀç ¹öÆ° »óÅÂ¸¦ ´ÙÀ½ Äİ¹éÀ» À§ÇØ ÀúÀå
@@ -198,17 +217,17 @@ private:
     std::vector<int> last_buttons_;
     std::map<int, AxisCalibration> calibration_data_; // Ä¶¸®ºê·¹ÀÌ¼Ç µ¥ÀÌÅÍ ÀúÀå¿ë map
 
-    uint8_t last_aux_cmd_ = 0; // ì´ì „ aux_command ìƒíƒœ ì €ì¥
+    uint8_t last_aux_cmd_ = 0; // ?´ì „ aux_command ?íƒœ ?€??
 };
 
 int main(int argc, char* argv[])
 {
     rclcpp::init(argc, argv);
 //    rclcpp::spin(std::make_shared<TeleopNode>());
-    // NodeOptionsë¥¼ ìƒì„±í•˜ê³ , íŒŒë¼ë¯¸í„°ë¥¼ ìë™ìœ¼ë¡œ ì„ ì–¸í•˜ë„ë¡ ì„¤ì •
+    // NodeOptionsë¥??ì„±?˜ê³ , ?Œë¼ë¯¸í„°ë¥??ë™?¼ë¡œ ? ì–¸?˜ë„ë¡??¤ì •
     rclcpp::NodeOptions options;
     options.automatically_declare_parameters_from_overrides(true);
-    // ìˆ˜ì •ëœ ìƒì„±ìì— options ì „ë‹¬
+    // ?˜ì •???ì„±?ì— options ?„ë‹¬
     rclcpp::spin(std::make_shared<TeleopNode>(options));
     rclcpp::shutdown();
     return 0;

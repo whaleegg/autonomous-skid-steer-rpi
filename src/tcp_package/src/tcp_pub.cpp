@@ -33,7 +33,7 @@ public:
             "/vehicle_status", 10,
             std::bind(&TcpPublisherNode::vehicleStatusCallback, this, std::placeholders::_1));
         aux_sub_ = this->create_subscription<std_msgs::msg::UInt8>(
-            "/aux_msg", 10,
+            "/aux_command", 10,
             std::bind(&TcpPublisherNode::auxCallback, this, std::placeholders::_1));
         left_rpm_sub_ = this->create_subscription<std_msgs::msg::Int32>(
             "/left_wheel_rpm", 10,

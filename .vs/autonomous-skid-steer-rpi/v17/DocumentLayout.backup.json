@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\tcp_package\\src\\tcp_pub.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\package.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\tcp_package\\package.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\tcp_package\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\package.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\tcp_package\\package.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\controller_package\\src\\core_controller_node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -176,20 +176,20 @@
               "RelativeDocumentMoniker": "src\\tcp_package\\src\\tcp_pub.cpp",
               "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\src\\tcp_pub.cpp",
               "RelativeToolTip": "src\\tcp_package\\src\\tcp_pub.cpp",
-              "ViewState": "AgIAADUAAAAAAAAAAAASwEoAAABJAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAASwBYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-06T11:18:17.438Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "CMakeLists.txt",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\CMakeLists.txt",
               "RelativeDocumentMoniker": "src\\tcp_package\\CMakeLists.txt",
               "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\CMakeLists.txt",
               "RelativeToolTip": "src\\tcp_package\\CMakeLists.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-08-06T11:17:03.159Z",
               "EditorCaption": ""
@@ -232,13 +232,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "package.xml",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\package.xml",
               "RelativeDocumentMoniker": "src\\tcp_package\\package.xml",
               "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\package.xml",
               "RelativeToolTip": "src\\tcp_package\\package.xml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
               "WhenOpened": "2025-08-06T11:17:08.081Z",
               "EditorCaption": ""

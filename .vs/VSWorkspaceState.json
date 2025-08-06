@@ -2,14 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\interfaces",
-    "\\src\\interfaces\\msg",
     "\\src\\ros2_odometry_estimation-main",
     "\\src\\ros2_odometry_estimation-main\\src",
     "\\src\\ros2_odometry_estimation-main\\src\\node",
     "\\src\\ros2_odometry_estimation-main\\src\\vehicle_models",
     "\\src\\tcp_package",
-    "\\src\\tcp_package\\src"
+    "\\src\\tcp_package\\src",
+    "\\src\\teleop_package",
+    "\\src\\teleop_package\\src"
   ],
   "SelectedNode": "\\src\\tcp_package\\src\\tcp_pub.cpp",
   "PreviewInSolutionExplorer": false
