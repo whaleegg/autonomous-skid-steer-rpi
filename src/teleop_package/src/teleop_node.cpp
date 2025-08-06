@@ -91,16 +91,16 @@ private:
             }
             
             // L1 버튼 (buttons[4]) 눌림(rising edge) 감지 시 bit 0 토글
-            if (msg->buttons[4] == 1 && last_button_state_[0] == 0) {
+            if (msg->buttons[4] == 1 && last_button_[4] == 0) {
                 aux_cmd ^= (1 << 0);
             }
             // R1 버튼 (buttons[5]) 눌림(rising edge) 감지 시 bit 1 토글
-            if (msg->buttons[5] == 1 && last_button_state_[1] == 0) {
+            if (msg->buttons[5] == 1 && last_button_[5] == 0) {
                 aux_cmd ^= (1 << 1);
             }
             // 버튼 상태 저장 (for next rising-edge detection)
-            last_button_state_[0] = msg->buttons[4];
-            last_button_state_[1] = msg->buttons[5];
+            //last_button_state_[0] = msg->buttons[4];
+            //last_button_state_[1] = msg->buttons[5];
             // 상태가 바뀌었으면 publish
             if (aux_cmd != last_aux_cmd_) {
                 auto aux_msg = std_msgs::msg::UInt8();

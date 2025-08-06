@@ -11,6 +11,6 @@
     "\\src\\teleop_package",
     "\\src\\teleop_package\\src"
   ],
-  "SelectedNode": "\\src\\tcp_package\\src\\tcp_pub.cpp",
+  "SelectedNode": "\\src\\teleop_package\\src\\teleop_node.cpp",
   "PreviewInSolutionExplorer": false
 }
