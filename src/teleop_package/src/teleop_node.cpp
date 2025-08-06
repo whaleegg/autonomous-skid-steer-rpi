@@ -92,11 +92,11 @@ private:
             
             uint8_t aux_cmd = 0;
             // L1 버튼 (buttons[4]) 눌림(rising edge) 감지 시 bit 0 토글
-            if (msg->buttons[4] == 1 && last_button_[4] == 0) {
+            if (msg->buttons[4] == 1 && last_buttons_[4] == 0) {
                 aux_cmd ^= (1 << 0);
             }
             // R1 버튼 (buttons[5]) 눌림(rising edge) 감지 시 bit 1 토글
-            if (msg->buttons[5] == 1 && last_button_[5] == 0) {
+            if (msg->buttons[5] == 1 && last_buttons_[5] == 0) {
                 aux_cmd ^= (1 << 1);
             }
             // 버튼 상태 저장 (for next rising-edge detection)
