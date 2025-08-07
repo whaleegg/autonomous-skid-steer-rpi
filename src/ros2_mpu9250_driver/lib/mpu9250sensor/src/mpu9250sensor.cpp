@@ -230,6 +230,9 @@ double MPU9250Sensor::getMagneticFluxDensityX() const
   int16_t magn_flux_x_lsb = i2cBus_->read(MAGN_XOUT_L);
   int16_t magn_flux_x = magn_flux_x_lsb | magn_flux_x_msb << 8;
   double magn_flux_x_converted = convertRawMagnetometerData(magn_flux_x);
+  if (calibrated_) {
+	  return magn_flux_x_converted - magn_x_offset_;
+  }
   initImuI2c();
   return magn_flux_x_converted;
 }
@@ -241,6 +244,9 @@ double MPU9250Sensor::getMagneticFluxDensityY() const
   int16_t magn_flux_y_lsb = i2cBus_->read(MAGN_YOUT_L);
   int16_t magn_flux_y = magn_flux_y_lsb | magn_flux_y_msb << 8;
   double magn_flux_y_converted = convertRawMagnetometerData(magn_flux_y);
+  if (calibrated_) {
+      return magn_flux_y_converted - magn_y_offset_;
+  }
   initImuI2c();
   return magn_flux_y_converted;
 }
@@ -252,6 +258,9 @@ double MPU9250Sensor::getMagneticFluxDensityZ() const
   int16_t magn_flux_z_lsb = i2cBus_->read(MAGN_ZOUT_L);
   int16_t magn_flux_z = magn_flux_z_lsb | magn_flux_z_msb << 8;
   double magn_flux_z_converted = convertRawMagnetometerData(magn_flux_z);
+  if (calibrated_) {
+      return magn_flux_z_converted - magn_z_offset_;
+  }
   initImuI2c();
   return magn_flux_z_converted;
 }
@@ -291,6 +300,13 @@ void MPU9250Sensor::setAccelerometerOffset(double accel_x_offset, double accel_y
   accel_y_offset_ = accel_y_offset;
   accel_z_offset_ = accel_z_offset;
 }
+void MPU9250Sensor::setMagnetometerOffset(double magn_x_offset, double magn_y_offset,
+    double magn_z_offset)
+{
+    magn_x_offset_ = magn_x_offset;
+    magn_y_offset_ = magn_y_offset;
+    magn_z_offset_ = magn_z_offset;
+}
 
 void MPU9250Sensor::calibrate()
 {
@@ -302,6 +318,9 @@ void MPU9250Sensor::calibrate()
     accel_x_offset_ += getAccelerationX();
     accel_y_offset_ += getAccelerationY();
     accel_z_offset_ += getAccelerationZ();
+    magn_x_offset_ += getMagneticFluxDensityX();
+    magn_y_offset_ += getMagneticFluxDensityY();
+    magn_z_offset_ += getMagneticFluxDensityZ();
     ++count;
   }
   gyro_x_offset_ /= CALIBRATION_COUNT;
@@ -311,6 +330,10 @@ void MPU9250Sensor::calibrate()
   accel_y_offset_ /= CALIBRATION_COUNT;
   accel_z_offset_ /= CALIBRATION_COUNT;
   accel_z_offset_ -= GRAVITY;
+  magn_x_offset /= CALIBRATION_COUNT;
+  magn_y_offset_ /= CALIBRATION_COUNT;
+  magn_z_offset_ /= CALIBRATION_COUNT;
+
   calibrated_ = true;
 }
 

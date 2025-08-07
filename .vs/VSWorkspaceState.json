@@ -2,15 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\ros2_odometry_estimation-main",
-    "\\src\\ros2_odometry_estimation-main\\src",
-    "\\src\\ros2_odometry_estimation-main\\src\\node",
-    "\\src\\ros2_odometry_estimation-main\\src\\vehicle_models",
-    "\\src\\tcp_package",
-    "\\src\\tcp_package\\src",
-    "\\src\\teleop_package",
-    "\\src\\teleop_package\\src"
+    "\\src\\ros2_mpu9250_driver",
+    "\\src\\ros2_mpu9250_driver\\lib",
+    "\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor",
+    "\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\include",
+    "\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\include\\mpu9250sensor",
+    "\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\src",
+    "\\src\\ros2_mpu9250_driver\\params",
+    "\\src\\ros2_mpu9250_driver_full",
+    "\\src\\ros2_mpu9250_driver_full\\params"
   ],
-  "SelectedNode": "\\src\\teleop_package\\src\\teleop_node.cpp",
+  "SelectedNode": "\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
   "PreviewInSolutionExplorer": false
 }

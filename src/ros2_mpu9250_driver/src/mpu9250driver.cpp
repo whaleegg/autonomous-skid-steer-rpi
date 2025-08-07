@@ -28,6 +28,9 @@ MPU9250Driver::MPU9250Driver() : Node("mpu9250publisher")
   mpu9250_->setAccelerometerOffset(this->get_parameter("accel_x_offset").as_double(),
                                    this->get_parameter("accel_y_offset").as_double(),
                                    this->get_parameter("accel_z_offset").as_double());
+  mpu9250_->setMagnetometerOffset(this->get_parameter("magn_x_offset").as_double(),
+                                  this->get_parameter("magn_y_offset").as_double(),
+                                  this->get_parameter("magn_z_offset").as_double());
   // Check if we want to calibrate the sensor
   if (this->get_parameter("calibrate").as_bool()) {
     RCLCPP_INFO(this->get_logger(), "Calibrating...");

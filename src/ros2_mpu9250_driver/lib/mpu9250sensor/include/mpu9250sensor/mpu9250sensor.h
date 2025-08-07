@@ -43,6 +43,7 @@ class MPU9250Sensor {
   double getMagneticFluxDensityZ() const;
   void setGyroscopeOffset(double gyro_x_offset, double gyro_y_offset, double gyro_z_offset);
   void setAccelerometerOffset(double accel_x_offset, double accel_y_offset, double accel_z_offset);
+  void setMagnetometerOffset(double magn_x_offset, double magn_y_offset, double magn_z_offset);
   void calibrate();
   void covariance();
   std::array<double, 9> get_accel_covariance_();
@@ -81,12 +82,18 @@ class MPU9250Sensor {
   int gyro_range_{250};
   int dlpf_range_{260};
   bool calibrated_{false};
+  double magn_x_offset_{ 0.0 };
+  double magn_y_offset_{ 0.0 };
+  double magn_z_offset_{ 0.0 };
   double gyro_x_offset_{0.0};
   double gyro_y_offset_{0.0};
   double gyro_z_offset_{0.0};
   double accel_x_offset_{0.0};
   double accel_y_offset_{0.0};
   double accel_z_offset_{0.0};
+  double magn_x_offset_{ 0.0 };
+  double magn_y_offset_{ 0.0 };
+  double magn_z_offset_{ 0.0 };
 
   // Covariance 관련 변수들 (새로 추가)
   std::array<double, 9> accel_covariance_;
