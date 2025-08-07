@@ -1,5 +1,3 @@
-# bringup/launch/skid_steer_robot.launch.py
-
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
@@ -9,84 +7,52 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    # 1. 파라미터 파일들의 경로를 찾음
-    params_file = os.path.join(
-        get_package_share_directory('params_package'),
-        'config',
-        'vehicle_params.yaml'
-    )
+    # bringup 패키지의 공유 디렉토리 경로를 미리 변수에 저장
+    bringup_dir = get_package_share_directory('bringup')
+    # params 패키지의 공유 디렉토리 경로
+    params_dir = get_package_share_directory('params_package')
 
-    ekf_params_file = os.path.join(
-        get_package_share_directory('params_package'),
-        'config',
-        'ekf.yaml'
-    )
+    # 사용할 파라미터 파일의 전체 경로
+    vehicle_params_file = os.path.join(params_dir, 'config', 'vehicle_params.yaml')
 
-    # 2. 각 기능 그룹의 Launch 파일을 '포함(Include)'하도록 설정
-    
-    # teleop.launch.py를 포함 (joy_node, teleop_node 실행)
-    teleop_launch = IncludeLaunchDescription(
+    # === 1. 기능 그룹별 Launch 파일 포함 ===
+
+    # a. 하드웨어 드라이버 그룹 실행 (joy, teleop, imu, socketcan)
+    hardware_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(get_package_share_directory('bringup'), 'launch', 'teleop.launch.py')
-        )
-        # 여기에 joy_dev:='/dev/input/js1' 처럼 파라미터를 넘겨줄 수도 있음
-    )
-
-    # ros2_socketcan의 sender/receiver 노드를 실행하는 Launch 파일을 포함
-    socketcan_sender_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(get_package_share_directory('ros2_socketcan'), 'launch', 'socket_can_sender.launch.py')
-        ),
-        launch_arguments={'interface': 'can0'}.items()
-    )
-
-    socketcan_receiver_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(get_package_share_directory('ros2_socketcan'), 'launch', 'socket_can_receiver.launch.py')
-        ),
-        launch_arguments={'interface': 'can0'}.items()
-    )
-
-    # c. imu.launch.py (imu_driver + imu_filter 실행) - 새로 만듦
-    imu_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(get_package_share_directory('bringup'), 'launch', 'imu.launch.py')
+            os.path.join(bringup_dir, 'launch', 'hardware.launch.py')
         )
     )
 
+    # b. 오도메트리/로컬라이제이션 그룹 실행 (ekf_node)
+    odometry_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(bringup_dir, 'launch', 'odometry.launch.py')
+        )
+    )
 
-    # 3. 개별 핵심 노드들을 직접 실행하도록 설정
+    # === 2. 핵심 로직 노드 실행 ===
 
-    # a. core_controller_node (상태 관리, CAN <-> ROS 변환, /odom/wheel 발행)
+    # a. core_controller_node (상태 관리 및 제어)
     core_controller_node = Node(
         package='controller_package',
         executable='core_controller_node',
         name='core_controller_node',
         output='screen',
-        parameters=[params_file] # 나중에 파라미터 파일 로드
+        parameters=[vehicle_params_file]
     )
 
-    # (향후) 자율주행 노드들 실행
-    # b. robot_localization (EKF 센서 퓨전)
-    robot_localization_node = Node(
-       package='robot_localization',
-       executable='ekf_node',
-       name='ekf_filter_node',
-       output='screen',
-       parameters=[ekf_params_file]
+    # 4. 자율 기능 그룹 실행
+    autonomy_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(bringup_dir, 'launch', 'autonomy.launch.py')
+        )
     )
 
-    # parking_node = Node(...)
-    # path_return_node = Node(...)
-
-    # 4. 모든 것을 하나의 LaunchDescription에 담아 반환
+    # === 3. 최종 실행 목록 구성 ===
     return LaunchDescription([
-        teleop_launch,
-        # socketcan_launch,
-	socketcan_sender_launch,
-        socketcan_receiver_launch,
+        hardware_launch,
+        odometry_launch,
         core_controller_node,
-	robot_localization_node,
-        # parking_node,
-        # path_return_node,
+        autonomy_launch,
     ])

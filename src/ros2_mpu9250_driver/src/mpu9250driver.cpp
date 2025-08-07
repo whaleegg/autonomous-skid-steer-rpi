@@ -46,10 +46,12 @@ MPU9250Driver::MPU9250Driver() : Node("mpu9250publisher")
   mpu9250_->printConfig();
   mpu9250_->printOffsets();
   // Create publisher
-  publisher_ = this->create_publisher<sensor_msgs::msg::Imu>("imu/data_raw", 10);
+//  publisher_ = this->create_publisher<sensor_msgs::msg::Imu>("imu", 10);
   // 자기장 퍼블리셔 추가
-  mag_publisher_ = this->create_publisher<sensor_msgs::msg::MagneticField>(
-      "imu/mag", rclcpp::QoS(10));
+//  mag_publisher_ = this->create_publisher<sensor_msgs::msg::MagneticField>(
+//      "imu/mag", rclcpp::QoS(10));
+  publisher_ = this->create_publisher<sensor_msgs::msg::Imu>("imu/data_raw", rclcpp::SystemDefaultsQoS());
+  mag_publisher_ = this->create_publisher<sensor_msgs::msg::MagneticField>("imu/mag", rclcpp::SystemDefaultsQoS());
 
   std::chrono::duration<int64_t, std::milli> frequency =
       1000ms / this->get_parameter("gyro_range").as_int();
@@ -58,36 +60,45 @@ MPU9250Driver::MPU9250Driver() : Node("mpu9250publisher")
 
 void MPU9250Driver::handleInput()
 {
-  auto message = sensor_msgs::msg::Imu();
-  message.header.stamp = this->get_clock()->now();
-  message.header.frame_id = "base_link";
-  // Direct measurements
-  //message.linear_acceleration_covariance = {0};
-  message.linear_acceleration_covariance  = mpu9250_->get_accel_covariance_();
-  message.linear_acceleration.x = mpu9250_->getAccelerationX();
-  message.linear_acceleration.y = mpu9250_->getAccelerationY();
-  message.linear_acceleration.z = mpu9250_->getAccelerationZ();
-  //message.angular_velocity_covariance[0] = {0};
-  message.angular_velocity_covariance = mpu9250_->get_gyro_covariance_();
-  message.angular_velocity.x = mpu9250_->getAngularVelocityX();
-  message.angular_velocity.y = mpu9250_->getAngularVelocityY();
-  message.angular_velocity.z = mpu9250_->getAngularVelocityZ();
-  // Calculate euler angles, convert to quaternion and store in message
-  message.orientation_covariance[0] = -1.0;
-  //message.orientation_covariance = mpu9250_->get_orientation_covariance_();
-  //calculateOrientation(message);
-  publisher_->publish(message);
-
-
-  // 자기장 데이터 읽어서 메시지 생성
+  // 1. 메시지 객체들을 먼저 생성
+  auto imu_raw_msg = sensor_msgs::msg::Imu();
   auto mag_msg = sensor_msgs::msg::MagneticField();
-  mag_msg.header.stamp = this->get_clock()->now();
+
+  // 2. 타임스탬프를 한 번만 생성하여 모든 메시지에 동일하게 적용
+  rclcpp::Time current_stamp = this->get_clock()->now();
+  imu_raw_msg.header.stamp = current_stamp;
+  mag_msg.header.stamp = current_stamp;
+
+  // 3. frame_id를 'imu_link'로 통일
+  imu_raw_msg.header.frame_id = "imu_link";
   mag_msg.header.frame_id = "imu_link";
+
+  // --- 4. 각 센서 데이터 읽기 및 채우기 ---
+
+  // 가속도계
+  imu_raw_msg.linear_acceleration.x = mpu9250_->getAccelerationX();
+  imu_raw_msg.linear_acceleration.y = mpu9250_->getAccelerationY();
+  imu_raw_msg.linear_acceleration.z = mpu9250_->getAccelerationZ();
+  imu_raw_msg.linear_acceleration_covariance  = mpu9250_->get_accel_covariance_();
+
+  // 자이로스코프
+  imu_raw_msg.angular_velocity.x = mpu9250_->getAngularVelocityX();
+  imu_raw_msg.angular_velocity.y = mpu9250_->getAngularVelocityY();
+  imu_raw_msg.angular_velocity.z = mpu9250_->getAngularVelocityZ();
+  imu_raw_msg.angular_velocity_covariance = mpu9250_->get_gyro_covariance_();
+
+  // 지자기 센서
   mag_msg.magnetic_field.x = mpu9250_->getMagneticFluxDensityX();
   mag_msg.magnetic_field.y = mpu9250_->getMagneticFluxDensityY();
   mag_msg.magnetic_field.z = mpu9250_->getMagneticFluxDensityZ();
-  // 필요시 공분산 설정
   mag_msg.magnetic_field_covariance = mpu9250_->get_mag_covariance_();
+    
+  // --- 5. Orientation 필드는 비활성화 ---
+  // calculateOrientation() 호출을 제거하고, covariance[0] = -1.0으로 설정
+  imu_raw_msg.orientation_covariance[0] = -1.0;
+    
+  // --- 6. 최종 발행 ---
+  publisher_->publish(imu_raw_msg);
   mag_publisher_->publish(mag_msg);
 }
 

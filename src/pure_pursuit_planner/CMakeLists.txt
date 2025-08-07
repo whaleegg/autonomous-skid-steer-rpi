@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(autonomy_package)
+project(pure_pursuit_planner)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -8,34 +8,37 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(interfaces REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(visualization_msgs REQUIRED)
 
-# --- path_recorder_node 빌드 규칙 ---
-add_executable(path_recorder_node src/path_recorder_node.cpp)
-ament_target_dependencies(path_recorder_node
-  rclcpp
-  interfaces
-  nav_msgs
-  geometry_msgs
+# pure_pursuit_planner
+add_executable(pure_pursuit_planner src/pure_pursuit_planner_node.cpp src/pure_pursuit_planner_component.cpp)
+ament_target_dependencies(pure_pursuit_planner
+  rclcpp 
+  geometry_msgs 
+  nav_msgs 
+  tf2_geometry_msgs 
+  tf2_ros
+  visualization_msgs
+)
+target_include_directories(pure_pursuit_planner PUBLIC
+  include
 )
 
-# --- path_return_node 빌드 규칙 추가 ---
-add_executable(path_return_node src/path_return_node.cpp)
-# path_return_node도 동일한 패키지들에 의존함
-ament_target_dependencies(path_return_node
-  rclcpp
-  interfaces
-  nav_msgs
-)
-
-# --- [추가] 설치 규칙 ---
+# Install Cpp executables
 install(TARGETS
-  path_recorder_node
-  path_return_node
+  pure_pursuit_planner
   DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install other files
+install(DIRECTORY
+  launch
+  rviz
+  DESTINATION share/${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)
@@ -49,5 +52,7 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+set(CMAKE_BUILD_TYPE Debug)
 
 ament_package()

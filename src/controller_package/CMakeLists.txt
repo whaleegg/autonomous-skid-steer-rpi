@@ -13,9 +13,9 @@ find_package(geometry_msgs REQUIRED)
 find_package(can_msgs REQUIRED) # CAN 메시지 사용을 위해 필요
 find_package(interfaces REQUIRED) # 우리가 만든 커스텀 메시지 사용을 위해 필요
 
-find_package(nav_msgs REQUIRED)
-find_package(tf2_ros REQUIRED)
-find_package(tf2_geometry_msgs REQUIRED)
+#find_package(nav_msgs REQUIRED)
+#find_package(tf2_ros REQUIRED)
+#find_package(tf2_geometry_msgs REQUIRED)
 
 # --- 2. 실행 파일(노드) 빌드 설정 ---
 # 'core_controller_node'라는 이름의 실행 파일을 'src/core_controller_node.cpp'로부터 생성
@@ -30,9 +30,9 @@ ament_target_dependencies(core_controller_node
   can_msgs
   interfaces
 
-  nav_msgs
-  tf2_ros
-  tf2_geometry_msgs
+#  nav_msgs
+#  tf2_ros
+#  tf2_geometry_msgs
 )
 
 # --- 4. 실행 파일 설치 ---

@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     nano \
     i2c-tools \
     libi2c-dev \
+    libeigen3-dev \
+    libopencv-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -27,7 +29,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-humble-rviz2 \
     ros-humble-rqt \
     ros-humble-rqt-graph \
+    # --- odometry_estimator와 controller가 의존하는 패키지 ---
+    ros-humble-tf2-ros \
+    ros-humble-tf2-geometry-msgs \
+    ros-humble-nav-msgs \
     ros-humble-robot-localization \
+    # --- pure_pursuit_planner를 위한 ROS 2 의존성 ---
+    ros-humble-visualization-msgs \
     && rm -rf /var/lib/apt/lists/*
 
 # 4. (선택적) 필요한 Python 라이브러리 설치
@@ -41,7 +49,9 @@ COPY src /root/ros_ws/src
 # 6. ROS 의존성 설치 및 전체 소스 코드 빌드
 #    (WORKDIR가 /root/ros_ws이므로 'cd ros_ws'가 필요 없어짐)
 RUN . /opt/ros/humble/setup.sh \
-    && rosdep install --from-paths src -y --ignore-src \
+    && rosdep update \
+    && rosdep install --from-paths src -y --ignore-src --rosdistro humble \
+    || true \
     && colcon build --symlink-install
 
 # 7. 컨테이너 시작 시 작업 공간 자동 source

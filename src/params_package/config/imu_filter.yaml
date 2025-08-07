@@ -1,0 +1,7 @@
+imu_filter_madgwick_node:
+  ros__parameters:
+    use_mag: true
+    publish_tf: false
+
+    world_frame: "enu"     # ROS 2 표준 좌표계
+    remove_gravity_vector: true
