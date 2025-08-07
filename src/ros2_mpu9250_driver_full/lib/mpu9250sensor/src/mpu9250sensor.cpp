@@ -330,7 +330,7 @@ void MPU9250Sensor::calibrate()
   accel_y_offset_ /= CALIBRATION_COUNT;
   accel_z_offset_ /= CALIBRATION_COUNT;
   accel_z_offset_ -= GRAVITY;
-  magn_x_offset /= CALIBRATION_COUNT;
+  magn_x_offset_ /= CALIBRATION_COUNT;
   magn_y_offset_ /= CALIBRATION_COUNT;
   magn_z_offset_ /= CALIBRATION_COUNT;
   calibrated_ = true;
