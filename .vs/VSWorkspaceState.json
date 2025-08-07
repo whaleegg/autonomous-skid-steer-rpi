@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\ros2_mpu9250_driver_full",
-    "\\src\\ros2_mpu9250_driver_full\\include",
-    "\\src\\ros2_mpu9250_driver_full\\include\\mpu9250driver",
     "\\src\\ros2_mpu9250_driver_full\\lib",
     "\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor",
     "\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\include",
     "\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\include\\mpu9250sensor",
-    "\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src"
+    "\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src",
+    "\\src\\tcp_package",
+    "\\src\\tcp_package\\src"
   ],
-  "SelectedNode": "\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
+  "SelectedNode": "\\src\\tcp_package\\src\\tcp_pub.cpp",
   "PreviewInSolutionExplorer": false
 }

@@ -72,8 +72,8 @@ private:
 
         sockaddr_in addr{};
         addr.sin_family = AF_INET;
-        //addr.sin_addr.s_addr = INADDR_ANY;  // Listen on all interfaces
-		addr.sin_addr.s_addr = inet_addr("192.168.20.237"); //raspberry pi ip address
+        addr.sin_addr.s_addr = INADDR_ANY;  // Listen on all interfaces
+		//addr.sin_addr.s_addr = inet_addr("192.168.20.237"); //raspberry pi ip address
         addr.sin_port = htons(PORT);
 
         int opt = 1;
