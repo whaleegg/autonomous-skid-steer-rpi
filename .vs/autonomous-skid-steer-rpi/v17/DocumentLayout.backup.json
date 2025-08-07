@@ -3,6 +3,62 @@
   "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\launch\\mpu9250driver_launch.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver_full\\launch\\mpu9250driver_launch.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\params\\mpu9250.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver_full\\params\\mpu9250.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\src\\mpu9250driver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver_full\\src\\mpu9250driver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\package.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver_full\\package.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver_full\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\LICENSE.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver_full\\LICENSE.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver_full\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\params\\mpu9250.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver\\params\\mpu9250.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\controller_package\\src\\core_controller_node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\controller_package\\src\\core_controller_node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\teleop_package\\src\\teleop_node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\teleop_package\\src\\teleop_node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -31,10 +87,6 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\tcp_package\\package.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\controller_package\\src\\core_controller_node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\controller_package\\src\\core_controller_node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_odometry_estimation-main\\src\\vehicle_models\\vehicle_models.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_odometry_estimation-main\\src\\vehicle_models\\vehicle_models.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -43,28 +95,12 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\interfaces\\msg\\VehicleStatus.msg||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver-full\\src\\mpu9250driver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver-full\\src\\mpu9250driver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\src\\pure_pursuit_planner_component.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pure_pursuit_planner-feature-imu_odom_fusion\\src\\pure_pursuit_planner_component.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch\\pure_pursuit_planner.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch\\pure_pursuit_planner.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver-full\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver-full\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver-full\\package.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ros2_mpu9250_driver-full\\package.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\include\\pure_pursuit_planner\\pure_pursuit_planner_component.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -170,7 +206,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -182,56 +218,194 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "teleop_node.cpp",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\teleop_package\\src\\teleop_node.cpp",
-              "RelativeDocumentMoniker": "src\\teleop_package\\src\\teleop_node.cpp",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\teleop_package\\src\\teleop_node.cpp",
-              "RelativeToolTip": "src\\teleop_package\\src\\teleop_node.cpp",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAQwG0AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-06T14:47:29.92Z",
+              "DocumentIndex": 4,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\README.md",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver_full\\README.md",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\README.md",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver_full\\README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-07T08:36:33.613Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LICENSE.md",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\LICENSE.md",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver_full\\LICENSE.md",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\LICENSE.md",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver_full\\LICENSE.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-07T08:36:32.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "mpu9250sensor.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAvwO8AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-07T08:06:44.639Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "package.xml",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\teleop_package\\package.xml",
-              "RelativeDocumentMoniker": "src\\teleop_package\\package.xml",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\teleop_package\\package.xml",
-              "RelativeToolTip": "src\\teleop_package\\package.xml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\package.xml",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver_full\\package.xml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\package.xml",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver_full\\package.xml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2025-08-06T14:47:28.274Z"
+              "WhenOpened": "2025-08-06T08:46:59.703Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "REAMDME.md",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\REAMDME.md",
-              "RelativeDocumentMoniker": "src\\tcp_package\\REAMDME.md",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\REAMDME.md",
-              "RelativeToolTip": "src\\tcp_package\\REAMDME.md",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-08-06T13:22:12.78Z"
+              "DocumentIndex": 2,
+              "Title": "mpu9250driver.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\src\\mpu9250driver.cpp",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver_full\\src\\mpu9250driver.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\src\\mpu9250driver.cpp",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver_full\\src\\mpu9250driver.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-06T08:59:35.075Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "tcp_pub.cpp",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\src\\tcp_pub.cpp",
-              "RelativeDocumentMoniker": "src\\tcp_package\\src\\tcp_pub.cpp",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\src\\tcp_pub.cpp",
-              "RelativeToolTip": "src\\tcp_package\\src\\tcp_pub.cpp",
-              "ViewState": "AgIAAJ4AAAAAAAAAAAAQwHUAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-06T11:18:17.438Z"
+              "Title": "mpu9250.yaml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\params\\mpu9250.yaml",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver_full\\params\\mpu9250.yaml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\params\\mpu9250.yaml",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver_full\\params\\mpu9250.yaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-08-07T08:20:02.127Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "mpu9250driver_launch.py",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\launch\\mpu9250driver_launch.py",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver_full\\launch\\mpu9250driver_launch.py",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\launch\\mpu9250driver_launch.py",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver_full\\launch\\mpu9250driver_launch.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAiAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMtSURBVDhPrZS9T1tnFMZ/1/cLGxy7BNuJIeCG2hIiSSWqRmmR8Fh16lhVVVTRIR34Ezo2kSqUqUJeKkHLEqlDWZAyUJZEoUNaoTatXEgsQykGFFyw8de997337RA5MeYqUx/pDOc55zx6znmlF/5PSCmVzjybzX4/NTV1U9f1TvoUKpWKrFard5aXl\u002B/u7e1Vu\u002BtaNzE9PU0ikeimX2J1dVUWi8UvVFWVKysr3xQKhXJn/YwgQKFQ6KZQVZVUKoWu64FsNhtNp9O3LMsKapo2u7Gxcdju8xVMJpPdFIry6jqGYeiTk5MDuq5/IqW0hBBfFwqFOkCgc6gNwzDORPuuqqqytLTE3Nycura2diEUCk2Yphlvz/o63Nzc7KbQNI10Os27N95n4vp7aAGFZv3Emp\u002Bf//tUX2fSxtjYWDdFzRL8lD9kv9qk2bTRA3AxrGoXh4b7A4FXi/oK\u002Bjm0\u002BpI8269xUKnz\u002BOk\u002BwrGJ9Rn6R\u002BNDI/F4vK/d53vDVCp1JioNwaONPfI7ZTzh4AmXaq2hNEQgGA6HQ\u002B1ZX0EA13VxUfjrucO9xwf8tl3m2qUoE6l\u002BzvfqCOEghCAWrV9d\u002Bu7mz17zjyee5w37rry1tQXAbkvnxycn7JZPEMLGdRyE4\u002BA6Np7r4CkKhvIcmuvQWh8n9uWsr8NMJkMmk6Ehezg4riGEg\u002BcINDwiQY1ISCca0nk7FeJasgpuE6x/wN75wNdhPp8HYGe3iWXZeEIw3K8xk20SVI\u002BR0gPpETWOGAwegGi8EHWPI691ODKYwAiAEA63sgbvXPiV8dgzrsQLXBnIM9RbRBH/gqiBWwc9eeQraNs2tm0z8obJ5YEgYVMlds5DkS54NggLPA9cQAZA6tBz1cUY/NZ35VKpBIAJfJ69TMWCRGQLWja4LVAioARBV8DMHGG\u002B\u002BSc9bz1dXFyc9RUcHR09lSuKgumVJLW6gtsC9xB6b4BUQD2/88P93a8ePLj3KJfLNc4ILiwsvPwIOvHZpx9uXzIHU9i/v3iAk1\u002BQfdelG5woP3x4u5jL5RrdM6\u002BFlPKc9Jy7srW9J2vrnrRK21LK\u002B1LKj2dmZlLtvv8AoKdgTW7XN1wAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-08-07T07:25:24.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "mpu9250sensor.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\src\\mpu9250sensor.cpp",
+              "ViewState": "AgIAAM4AAAAAAAAAAAAvwOcAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-07T08:10:43.261Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "mpu9250sensor.h",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAvwF4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-08-07T08:12:24.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "mpu9250sensor.h",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver_full\\lib\\mpu9250sensor\\include\\mpu9250sensor\\mpu9250sensor.h",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC0AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-08-07T08:17:55.416Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "mpu9250.yaml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\params\\mpu9250.yaml",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver\\params\\mpu9250.yaml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\params\\mpu9250.yaml",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver\\params\\mpu9250.yaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-08-07T08:19:49.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CMakeLists.txt",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\CMakeLists.txt",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver_full\\CMakeLists.txt",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver_full\\CMakeLists.txt",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver_full\\CMakeLists.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-08-06T08:58:52.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "mpu9250driver.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp",
+              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp",
+              "RelativeToolTip": "src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-06T08:21:08.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "core_controller_node.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\controller_package\\src\\core_controller_node.cpp",
+              "RelativeDocumentMoniker": "src\\controller_package\\src\\core_controller_node.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\controller_package\\src\\core_controller_node.cpp",
+              "RelativeToolTip": "src\\controller_package\\src\\core_controller_node.cpp",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-05T05:24:00.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "teleop_node.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\teleop_package\\src\\teleop_node.cpp",
+              "RelativeDocumentMoniker": "src\\teleop_package\\src\\teleop_node.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\teleop_package\\src\\teleop_node.cpp",
+              "RelativeToolTip": "src\\teleop_package\\src\\teleop_node.cpp",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAQwFcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-06T14:47:29.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "CMakeLists.txt",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\CMakeLists.txt",
               "RelativeDocumentMoniker": "src\\tcp_package\\CMakeLists.txt",
@@ -243,19 +417,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "core_controller_node.cpp",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\controller_package\\src\\core_controller_node.cpp",
-              "RelativeDocumentMoniker": "src\\controller_package\\src\\core_controller_node.cpp",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\controller_package\\src\\core_controller_node.cpp",
-              "RelativeToolTip": "src\\controller_package\\src\\core_controller_node.cpp",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAADAAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "tcp_pub.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\src\\tcp_pub.cpp",
+              "RelativeDocumentMoniker": "src\\tcp_package\\src\\tcp_pub.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\src\\tcp_pub.cpp",
+              "RelativeToolTip": "src\\tcp_package\\src\\tcp_pub.cpp",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAQwHUAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-05T05:24:00.446Z"
+              "WhenOpened": "2025-08-06T11:18:17.438Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 18,
+              "Title": "REAMDME.md",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\REAMDME.md",
+              "RelativeDocumentMoniker": "src\\tcp_package\\REAMDME.md",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\REAMDME.md",
+              "RelativeToolTip": "src\\tcp_package\\REAMDME.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-08-06T13:22:12.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "odometry_estimation_node.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_odometry_estimation-main\\src\\node\\odometry_estimation_node.cpp",
               "RelativeDocumentMoniker": "src\\ros2_odometry_estimation-main\\src\\node\\odometry_estimation_node.cpp",
@@ -267,7 +453,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 17,
+              "Title": "package.xml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\teleop_package\\package.xml",
+              "RelativeDocumentMoniker": "src\\teleop_package\\package.xml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\teleop_package\\package.xml",
+              "RelativeToolTip": "src\\teleop_package\\package.xml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2025-08-06T14:47:28.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "vehicle_models.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_odometry_estimation-main\\src\\vehicle_models\\vehicle_models.cpp",
               "RelativeDocumentMoniker": "src\\ros2_odometry_estimation-main\\src\\vehicle_models\\vehicle_models.cpp",
@@ -279,7 +477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 20,
               "Title": "package.xml",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\tcp_package\\package.xml",
               "RelativeDocumentMoniker": "src\\tcp_package\\package.xml",
@@ -291,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 22,
               "Title": "VehicleStatus.msg",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\interfaces\\msg\\VehicleStatus.msg",
               "RelativeDocumentMoniker": "src\\interfaces\\msg\\VehicleStatus.msg",
@@ -303,31 +501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "mpu9250driver.cpp",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver-full\\src\\mpu9250driver.cpp",
-              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver-full\\src\\mpu9250driver.cpp",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver-full\\src\\mpu9250driver.cpp",
-              "RelativeToolTip": "src\\ros2_mpu9250_driver-full\\src\\mpu9250driver.cpp",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADUAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-06T08:59:35.075Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "package.xml",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver-full\\package.xml",
-              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver-full\\package.xml",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver-full\\package.xml",
-              "RelativeToolTip": "src\\ros2_mpu9250_driver-full\\package.xml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2025-08-06T08:46:59.703Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 24,
               "Title": "pure_pursuit_planner.py",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch\\pure_pursuit_planner.py",
               "RelativeDocumentMoniker": "src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch\\pure_pursuit_planner.py",
@@ -339,19 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "mpu9250driver.cpp",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp",
-              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp",
-              "RelativeToolTip": "src\\ros2_mpu9250_driver\\src\\mpu9250driver.cpp",
-              "ViewState": "AgIAADkAAAAAAAAAAAAQwEwAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-06T08:21:08.564Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 23,
               "Title": "pure_pursuit_planner_component.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\src\\pure_pursuit_planner_component.cpp",
               "RelativeDocumentMoniker": "src\\pure_pursuit_planner-feature-imu_odom_fusion\\src\\pure_pursuit_planner_component.cpp",
@@ -363,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 25,
               "Title": "pure_pursuit_planner_component.hpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\include\\pure_pursuit_planner\\pure_pursuit_planner_component.hpp",
               "RelativeDocumentMoniker": "src\\pure_pursuit_planner-feature-imu_odom_fusion\\include\\pure_pursuit_planner\\pure_pursuit_planner_component.hpp",
@@ -375,19 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CMakeLists.txt",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver-full\\CMakeLists.txt",
-              "RelativeDocumentMoniker": "src\\ros2_mpu9250_driver-full\\CMakeLists.txt",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_mpu9250_driver-full\\CMakeLists.txt",
-              "RelativeToolTip": "src\\ros2_mpu9250_driver-full\\CMakeLists.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-08-06T08:58:52.062Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 26,
               "Title": "pure_pursuit_planner_node.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\src\\pure_pursuit_planner_node.cpp",
               "RelativeDocumentMoniker": "src\\pure_pursuit_planner-feature-imu_odom_fusion\\src\\pure_pursuit_planner_node.cpp",
@@ -399,7 +549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 27,
               "Title": "package.xml",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\arcanain_simulator-feature-imu_odom_fusion\\package.xml",
               "RelativeDocumentMoniker": "src\\arcanain_simulator-feature-imu_odom_fusion\\package.xml",
@@ -411,7 +561,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 28,
               "Title": "path_publisher.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\path_smoother-feature-imu_odom_fusion\\src\\path_publisher.cpp",
               "RelativeDocumentMoniker": "src\\path_smoother-feature-imu_odom_fusion\\src\\path_publisher.cpp",
@@ -423,7 +573,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 32,
               "Title": "save_path.py",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch\\save_path.py",
               "RelativeDocumentMoniker": "src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch\\save_path.py",
@@ -435,7 +585,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 33,
               "Title": "odrive_odom_pure_pursuit.py",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch\\odrive_odom_pure_pursuit.py",
               "RelativeDocumentMoniker": "src\\pure_pursuit_planner-feature-imu_odom_fusion\\launch\\odrive_odom_pure_pursuit.py",
@@ -447,7 +597,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 29,
               "Title": "path_smoother.py",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\path_smoother-feature-imu_odom_fusion\\launch\\path_smoother.py",
               "RelativeDocumentMoniker": "src\\path_smoother-feature-imu_odom_fusion\\launch\\path_smoother.py",
@@ -459,7 +609,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 31,
               "Title": "package.xml",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\path_smoother-feature-imu_odom_fusion\\package.xml",
               "RelativeDocumentMoniker": "src\\path_smoother-feature-imu_odom_fusion\\package.xml",
@@ -471,7 +621,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 30,
               "Title": "CMakeLists.txt",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\path_smoother-feature-imu_odom_fusion\\CMakeLists.txt",
               "RelativeDocumentMoniker": "src\\path_smoother-feature-imu_odom_fusion\\CMakeLists.txt",
@@ -483,7 +633,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 37,
               "Title": "imu_orientation_visual.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\imu_tools\\rviz_imu_plugin\\src\\imu_orientation_visual.cpp",
               "RelativeDocumentMoniker": "src\\imu_tools\\rviz_imu_plugin\\src\\imu_orientation_visual.cpp",
@@ -495,7 +645,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 40,
               "Title": "imu_display.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\imu_tools\\rviz_imu_plugin\\src\\imu_display.cpp",
               "RelativeDocumentMoniker": "src\\imu_tools\\rviz_imu_plugin\\src\\imu_display.cpp",
@@ -507,7 +657,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 36,
               "Title": "imu_axes_visual.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\imu_tools\\rviz_imu_plugin\\src\\imu_axes_visual.cpp",
               "RelativeDocumentMoniker": "src\\imu_tools\\rviz_imu_plugin\\src\\imu_axes_visual.cpp",
@@ -519,7 +669,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 35,
               "Title": "package.xml",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_odometry_estimation-main\\package.xml",
               "RelativeDocumentMoniker": "src\\ros2_odometry_estimation-main\\package.xml",
@@ -531,7 +681,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 41,
               "Title": "CMakeLists.txt",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_odometry_estimation-main\\CMakeLists.txt",
               "RelativeDocumentMoniker": "src\\ros2_odometry_estimation-main\\CMakeLists.txt",
@@ -543,7 +693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 39,
               "Title": "mag_display.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\imu_tools\\rviz_imu_plugin\\src\\mag_display.cpp",
               "RelativeDocumentMoniker": "src\\imu_tools\\rviz_imu_plugin\\src\\mag_display.cpp",
@@ -555,7 +705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 34,
               "Title": "CMakeLists.txt",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\controller_package\\CMakeLists.txt",
               "RelativeDocumentMoniker": "src\\controller_package\\CMakeLists.txt",
@@ -567,7 +717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 38,
               "Title": "mag_visual.cpp",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\imu_tools\\rviz_imu_plugin\\src\\mag_visual.cpp",
               "RelativeDocumentMoniker": "src\\imu_tools\\rviz_imu_plugin\\src\\mag_visual.cpp",
@@ -579,7 +729,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 42,
               "Title": "vehicle_models.h",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\ros2_odometry_estimation-main\\include\\vehicle_models\\vehicle_models.h",
               "RelativeDocumentMoniker": "src\\ros2_odometry_estimation-main\\include\\vehicle_models\\vehicle_models.h",
@@ -591,7 +741,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 43,
               "Title": "skid_steer_robot.launch.py",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\bringup\\launch\\skid_steer_robot.launch.py",
               "RelativeDocumentMoniker": "src\\bringup\\launch\\skid_steer_robot.launch.py",
@@ -603,7 +753,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 45,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\imu_tools\\.gitignore",
               "RelativeDocumentMoniker": "src\\imu_tools\\.gitignore",
@@ -615,7 +765,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 46,
               "Title": "dkrun.sh",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\dkrun.sh",
               "RelativeDocumentMoniker": "dkrun.sh",
@@ -627,7 +777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 47,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\Dockerfile",
               "RelativeDocumentMoniker": "Dockerfile",
@@ -639,7 +789,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 48,
               "Title": "README.md",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\pure_pursuit_planner-main\\README.md",
               "RelativeDocumentMoniker": "src\\pure_pursuit_planner-main\\README.md",
@@ -650,7 +800,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 44,
               "Title": "package.xml",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\Coding\\C\\proj1\\autonomous-skid-steer-rpi\\src\\controller_package\\package.xml",
               "RelativeDocumentMoniker": "src\\controller_package\\package.xml",

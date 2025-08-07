@@ -91,9 +91,7 @@ class MPU9250Sensor {
   double accel_x_offset_{0.0};
   double accel_y_offset_{0.0};
   double accel_z_offset_{0.0};
-  double magn_x_offset_{ 0.0 };
-  double magn_y_offset_{ 0.0 };
-  double magn_z_offset_{ 0.0 };
+
 
   // Covariance 관련 변수들 (새로 추가)
   std::array<double, 9> accel_covariance_;
