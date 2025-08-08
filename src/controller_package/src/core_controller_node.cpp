@@ -65,14 +65,22 @@ public:
 
         // 3. Publisher 및 Subscriber 선언
         can_tx_publisher_ = this->create_publisher<can_msgs::msg::Frame>("/to_can_bus", 10);
-        vehicle_status_publisher_ = this->create_publisher<interfaces::msg::VehicleStatus>("/vehicle_status", 10);
-//        odom_wheel_publisher_ = this->create_publisher<nav_msgs::msg::Odometry>("/odom/wheel", 10);
+
+	// VehicleStatus는 마지막 상태를 유지하는 것이 좋으므로 transient_local QoS 사용
+        rclcpp::QoS status_qos(1);
+        status_qos.transient_local();
+        vehicle_status_publisher_ = this->create_publisher<interfaces::msg::VehicleStatus>("/vehicle_status", status_qos);
+
 	left_rpm_publisher_ = this->create_publisher<std_msgs::msg::Int32>("/left_wheel_rpm", 10);
         right_rpm_publisher_ = this->create_publisher<std_msgs::msg::Int32>("/right_wheel_rpm", 10);
 
-	manual_cmd_sub_ = this->create_subscription<geometry_msgs::msg::Twist>(
+	// --- Subscribers ---
+        manual_cmd_sub_ = this->create_subscription<geometry_msgs::msg::Twist>(
             "/cmd_vel_manual", 10, std::bind(&CoreControllerNode::manual_cmd_callback, this, std::placeholders::_1));
         
+        auto_cmd_sub_ = this->create_subscription<geometry_msgs::msg::Twist>(
+            "/cmd_vel_auto", 10, std::bind(&CoreControllerNode::auto_cmd_callback, this, std::placeholders::_1));
+
         mode_request_sub_ = this->create_subscription<std_msgs::msg::String>(
             "/mode_request", 10, std::bind(&CoreControllerNode::mode_request_callback, this, std::placeholders::_1));
 
@@ -81,17 +89,6 @@ public:
 
         can_rx_sub_ = this->create_subscription<can_msgs::msg::Frame>(
             "/from_can_bus", 10, std::bind(&CoreControllerNode::can_rx_callback, this, std::placeholders::_1));
-
-	auto_cmd_sub_ = this->create_subscription<geometry_msgs::msg::Twist>(
-            "/cmd_vel_auto", 10, std::bind(&CoreControllerNode::auto_cmd_callback, this, std::placeholders::_1));
-
-//	path_publisher_ = this->create_publisher<nav_msgs::msg::Path>("/recorded_path", 10);
-
-	// 4. 기타 ROS 2 객체 초기화
-//	tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
-
-        // TODO: 자율주행 노드가 발행할 토픽 구독
-        // auto_cmd_sub_ = this->create_subscription<geometry_msgs::msg::Twist>( ... );
 
         // === 메인 제어 루프 타이머 ===
         control_loop_timer_ = this->create_wall_timer(
@@ -110,6 +107,10 @@ private:
     double current_w_ = 0.0; // 피드백 받은 현재 각속도 (rad/s)
     uint8_t current_aux_cmd_ = 0;
 
+    // --- 자율 제어용 ---
+    double latest_auto_v_ = 0.0;
+    double latest_auto_w_ = 0.0;
+
 //    double odom_x_ = 0.0, odom_y_ = 0.0, odom_theta_ = 0.0;
 //    rclcpp::Time last_odom_time_;
 
@@ -121,7 +122,8 @@ private:
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr mode_request_sub_;
     rclcpp::Subscription<std_msgs::msg::UInt8>::SharedPtr aux_command_sub_;
     rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr can_rx_sub_;
-    rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr auto_cmd_sub_; 
+    rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr auto_cmd_sub_;
+
     rclcpp::TimerBase::SharedPtr control_loop_timer_;
 //    std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
     rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr left_rpm_publisher_;
@@ -150,7 +152,7 @@ private:
                 handle_parking_mode();
                 break;
 	        case VehicleMode::RETURNING:
-                handle_autonomous_mode();
+                handle_returning_mode();
                 break;
             case VehicleMode::EMERGENCY_STOP:
                 handle_emergency_stop();
@@ -188,10 +190,11 @@ private:
 	convert_velocity_to_pwm_and_send(target_v_, target_w_);
     }
 
-    void handle_autonomous_mode() {
-        RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In AUTONOMOUS mode...");
-        // TODO: 자율주행 노드가 발행한 target_v_, target_w_를 사용
-        convert_velocity_to_pwm_and_send(target_v_, target_w_);
+    void handle_returning_mode() {
+        RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 1000, "In RETURNING mode...");
+
+        // 자율주행 노드가 발행한 최신 (v, w) 값을 PWM으로 변환하여 전송
+        convert_velocity_to_pwm_and_send(latest_auto_v_, latest_auto_w_);
     }
 
     void handle_emergency_stop() {
@@ -258,11 +261,8 @@ private:
 
     void auto_cmd_callback(const geometry_msgs::msg::Twist::SharedPtr msg)
     {
-        // 자율주행 모드일 때만 목표 속도를 업데이트
-        if (current_mode_ == VehicleMode::RETURNING || current_mode_ == VehicleMode::PARKING) {
-            this->target_v_ = msg->linear.x;
-            this->target_w_ = msg->angular.z;
-        }
+        latest_auto_v_ = msg->linear.x;
+        latest_auto_w_ = msg->angular.z;
     }
 
     // --- 유틸리티 함수 ---

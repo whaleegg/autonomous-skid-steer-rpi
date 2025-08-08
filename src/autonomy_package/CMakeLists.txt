@@ -22,19 +22,9 @@ ament_target_dependencies(path_recorder_node
   geometry_msgs
 )
 
-# --- path_return_node 빌드 규칙 추가 ---
-add_executable(path_return_node src/path_return_node.cpp)
-# path_return_node도 동일한 패키지들에 의존함
-ament_target_dependencies(path_return_node
-  rclcpp
-  interfaces
-  nav_msgs
-)
-
 # --- [추가] 설치 규칙 ---
 install(TARGETS
   path_recorder_node
-  path_return_node
   DESTINATION lib/${PROJECT_NAME}
 )
 

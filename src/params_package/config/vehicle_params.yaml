@@ -45,11 +45,11 @@ teleop_node:
     # 스키드 스티어 모드 최대 각속도 (단위: deg/s)
     skid_max_angular_velocity: 255.0 # 4.5 rad/s
     linear_sensitivity: 1.0
-    steering_sensitivity: 0.7
+    steering_sensitivity: 0.3
 
     # === 아커만 시뮬레이션 전용 파라미터 ===
     wheelbase: 0.13
-    max_steering_angle: 35.0 # 이전 0.6109 rad
+    max_steering_angle: 55.0 #35.0  이전 0.6109 rad
     ackermann_max_linear_velocity: 0.792
 
 # --- [추가] ros2_odometry_estimation 노드를 위한 섹션 ---

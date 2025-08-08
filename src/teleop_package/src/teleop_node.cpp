@@ -77,6 +77,7 @@ public:
         aux_command_pub_ = this->create_publisher<std_msgs::msg::UInt8>("/aux_command", 10);
         joy_sub_ = this->create_subscription<sensor_msgs::msg::Joy>(
             "/joy", 10, std::bind(&TeleopNode::joy_callback, this, std::placeholders::_1));
+//	steering_mode_publisher_ = this->create_publisher<std_msgs::msg::String>("/steering_mode", 10);
 
         last_buttons_.resize(12, 0);
         RCLCPP_INFO(this->get_logger(), "Teleop Node has been started.");
@@ -104,6 +105,10 @@ private:
         
         cmd_vel_pub_->publish(twist_msg);
         
+//	auto mode_msg = std_msgs::msg::String();
+//	mode_msg.data = (current_steering_mode_ == SteeringMode::SKID_STEER) ? "skid_steer" : "ackermann_sim";
+//	steering_mode_publisher_->publish(mode_msg);
+
         last_buttons_ = msg->buttons;
     }
 
